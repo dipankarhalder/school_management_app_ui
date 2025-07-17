@@ -1,0 +1,31 @@
+export const theme = {
+  font: {
+    primary: '"Nunito Sans", sans-serif',
+  },
+  colors: {
+    transparent: "transparent",
+    white: "#ffffff",
+    black: "#000000",
+
+    warning: "#e38000",
+    warningbg: "#fef3dd",
+    success: "#037722",
+    successbg: "#dffbe7",
+    info: "#016ea3",
+    infobg: "#e5f4ff",
+    error: "#a20018",
+    errorbg: "#ffe4e5",
+    secured: "#351e9a",
+    securedbg: "#f0e6ff",
+
+    bg: "#ececee",
+    green: "#146c2e",
+    blue: "#0b57d0",
+    hblue: "#00358a",
+    dark: "#1f1f1f",
+    gray: "#747775",
+    dgray: "#454545",
+    tableborder: "#d2dbe5",
+    tablehead: "#f1f5f9",
+  },
+};
