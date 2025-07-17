@@ -17,7 +17,7 @@ export const userRole = {
   STUFF: "staff",
 };
 
-export const pathItems = {
-  login: "/",
-  register: "/register",
+export const paths = {
+  LOGIN: "/",
+  REGISTER: "/register",
 };
