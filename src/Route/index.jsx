@@ -1,19 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 
-// error and routes
 import { Error } from "../Error";
-import { pathItems } from "../Constant";
-
-// super admin layout
+import { paths } from "../Constant";
 import { AuthLayout } from "../Pages/Layout/AuthLayout";
 
-// super admin auth
 import { Signin } from "../Pages/Auth/Signin";
 import { Signup } from "../Pages/Auth/Signup";
 
 export const router = createBrowserRouter([
   {
-    path: pathItems.login,
+    path: paths.LOGIN,
     element: <AuthLayout />,
     errorElement: <Error />,
     children: [
@@ -22,7 +18,7 @@ export const router = createBrowserRouter([
         element: <Signin />,
       },
       {
-        path: pathItems.register,
+        path: paths.REGISTER,
         element: <Signup />,
       },
     ],
