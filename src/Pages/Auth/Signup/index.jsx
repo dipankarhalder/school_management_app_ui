@@ -7,10 +7,10 @@ import * as yup from "yup";
 import { paths } from "../../../Constant";
 import { Button } from "../../../Shared/Button";
 import { Checkbox } from "../../../Shared/Checkbox";
-import { EmailInput } from "../../../components/Shared/FormElements/EmailInput";
-import { PasswordInput } from "../../../components/Shared/FormElements/PasswordInput";
-import { TextInput } from "../../../components/Shared/FormElements/TextInput";
-import { PhoneInput } from "../../../components/Shared/FormElements/PhoneInput";
+import { EmailInput } from "../../../Components/Shared/FormElements/EmailInput";
+import { PasswordInput } from "../../../Components/Shared/FormElements/PasswordInput";
+import { TextInput } from "../../../Components/Shared/FormElements/TextInput";
+import { PhoneInput } from "../../../Components/Shared/FormElements/PhoneInput";
 import { ToastContext } from "../../../Shared/Toast/context/ToastContext";
 
 import {

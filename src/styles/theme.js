@@ -32,5 +32,6 @@ export const theme = {
     btnbg: "#1f883d",
     btnhover: "#398E3D",
     btnborder: "#3AB640",
+    sidebar: "#f6f8fa",
   },
 };

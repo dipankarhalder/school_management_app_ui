@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Error } from "../Error";
 import { paths } from "../Constant";
 import { AuthLayout } from "../Pages/Layout/AuthLayout";
+import { MainLayout } from "../Pages/Layout/MainLayout";
 
 import { SigninPage } from "../Pages/Auth/Signin";
 import { SignupPage } from "../Pages/Auth/Signup";
@@ -37,7 +38,7 @@ export const router = createBrowserRouter([
   },
   {
     path: paths.APPS,
-    element: <AuthLayout />,
+    element: <MainLayout />,
     children: [
       {
         index: true,
