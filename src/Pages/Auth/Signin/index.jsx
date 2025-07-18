@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -31,8 +31,8 @@ const MESSAGES = {
     required: "Please provide a valid password.",
   },
   success: {
-    title: "Signed In!",
-    description: "You have successfully signed in.",
+    title: "Successfully Submitted",
+    description: "You are a authorized user.",
   },
 };
 
@@ -47,6 +47,7 @@ const signinSchema = yup.object({
 });
 
 export const Signin = () => {
+  const navigate = useNavigate();
   const { addToast } = useContext(ToastContext);
 
   const {
@@ -79,6 +80,7 @@ export const Signin = () => {
       title: MESSAGES.success.title,
       description: MESSAGES.success.description,
     });
+    navigate(paths.OTP);
   };
 
   return (
