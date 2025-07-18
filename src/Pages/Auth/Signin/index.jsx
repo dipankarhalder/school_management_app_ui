@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import { paths } from "../../../Constant";
 import { Button } from "../../../Shared/Button";
 import { Checkbox } from "../../../Shared/Checkbox";
 import { Logo } from "../../../components/common/Logo";
@@ -56,6 +57,21 @@ export const Signin = () => {
     resolver: yupResolver(signinSchema),
   });
 
+  const inputs = [
+    {
+      name: "email",
+      label: "Email Address",
+      component: EmailInput,
+      props: { register, errors, placeholder: "" },
+    },
+    {
+      name: "password",
+      label: "Password",
+      component: PasswordInput,
+      props: { register, errors, placeholder: "" },
+    },
+  ];
+
   const onSubmit = (data) => {
     console.log("Form Data:", data);
     addToast({
@@ -74,20 +90,17 @@ export const Signin = () => {
           <p>Nice to see you again, please enter your details</p>
         </AppHeadingSignin>
         <AppFormSignin onSubmit={handleSubmit(onSubmit)} noValidate>
-          <EmailInput
-            name="email"
-            label="Email Address"
-            register={register}
-            errors={errors}
-            placeholder=""
-          />
-          <PasswordInput
-            name="password"
-            label="Password"
-            register={register}
-            errors={errors}
-            placeholder=""
-          />
+          {inputs.map((input) => {
+            const Component = input.component;
+            return (
+              <Component
+                key={input.name}
+                name={input.name}
+                label={input.label}
+                {...input.props}
+              />
+            );
+          })}
           <AppCheckField>
             <Checkbox
               id="remember"
@@ -95,14 +108,14 @@ export const Signin = () => {
               label="Remember Me"
               {...register("remember")}
             />
-            <Link to="/">Forgot password?</Link>
+            <Link to={paths.FORGOT}>Forgot password?</Link>
           </AppCheckField>
           <AppBtnField>
             <Button>Continue</Button>
           </AppBtnField>
           <AppLinkCover>
             <p>New to Pixelwix University?</p>
-            <Link to="/">Create an account</Link>
+            <Link to={paths.REGISTER}>Create an account</Link>
           </AppLinkCover>
         </AppFormSignin>
       </AppInsideSignin>
