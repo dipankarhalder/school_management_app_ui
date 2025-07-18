@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { paths } from "../../../Constant";
 import { Button } from "../../../Shared/Button";
-import { Logo } from "../../../components/common/Logo";
+import { Logo } from "../../../Components/Common/Logo";
 import { Input } from "../../../Shared/Input";
 import { ToastContext } from "../../../Shared/Toast/context/ToastContext";
 

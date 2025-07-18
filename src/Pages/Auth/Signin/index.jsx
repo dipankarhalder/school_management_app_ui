@@ -7,9 +7,9 @@ import * as yup from "yup";
 import { paths } from "../../../Constant";
 import { Button } from "../../../Shared/Button";
 import { Checkbox } from "../../../Shared/Checkbox";
-import { Logo } from "../../../components/common/Logo";
-import { EmailInput } from "../../../components/Shared/FormElements/EmailInput";
-import { PasswordInput } from "../../../components/Shared/FormElements/PasswordInput";
+import { Logo } from "../../../Components/Common/Logo";
+import { EmailInput } from "../../../Components/Shared/FormElements/EmailInput";
+import { PasswordInput } from "../../../Components/Shared/FormElements/PasswordInput";
 import { ToastContext } from "../../../Shared/Toast/context/ToastContext";
 
 import {
