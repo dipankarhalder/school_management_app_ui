@@ -4,10 +4,12 @@ import { Error } from "../Error";
 import { paths } from "../Constant";
 import { AuthLayout } from "../Pages/Layout/AuthLayout";
 
-import { Signin } from "../Pages/Auth/Signin";
-import { Signup } from "../Pages/Auth/Signup";
-import { OtpVerification } from "../Pages/Auth/OTP";
-import { ForgotPassword } from "../Pages/Auth/ForgotPassword";
+import { SigninPage } from "../Pages/Auth/Signin";
+import { SignupPage } from "../Pages/Auth/Signup";
+import { OtpVerificationPage } from "../Pages/Auth/OTP";
+import { ForgotPasswordPage } from "../Pages/Auth/ForgotPassword";
+import { DashboardPage } from "../Pages/Main/Dashboard";
+import { ProfilePage } from "../Pages/Main/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -17,19 +19,33 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Signin />,
+        element: <SigninPage />,
       },
       {
         path: paths.REGISTER,
-        element: <Signup />,
+        element: <SignupPage />,
       },
       {
         path: paths.OTP,
-        element: <OtpVerification />,
+        element: <OtpVerificationPage />,
       },
       {
         path: paths.FORGOT,
-        element: <ForgotPassword />,
+        element: <ForgotPasswordPage />,
+      },
+    ],
+  },
+  {
+    path: paths.APPS,
+    element: <AuthLayout />,
+    children: [
+      {
+        index: true,
+        element: <DashboardPage />,
+      },
+      {
+        path: paths.PROFILE,
+        element: <ProfilePage />,
       },
     ],
   },
