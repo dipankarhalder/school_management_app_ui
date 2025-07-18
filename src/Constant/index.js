@@ -19,5 +19,7 @@ export const userRole = {
 
 export const paths = {
   LOGIN: "/",
-  REGISTER: "/register",
+  REGISTER: "register",
+  FORGOT: "forgot-password",
+  OTP: "otp",
 };

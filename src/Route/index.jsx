@@ -6,6 +6,8 @@ import { AuthLayout } from "../Pages/Layout/AuthLayout";
 
 import { Signin } from "../Pages/Auth/Signin";
 import { Signup } from "../Pages/Auth/Signup";
+import { OtpVerification } from "../Pages/Auth/OTP";
+import { ForgotPassword } from "../Pages/Auth/ForgotPassword";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ export const router = createBrowserRouter([
       {
         path: paths.REGISTER,
         element: <Signup />,
+      },
+      {
+        path: paths.OTP,
+        element: <OtpVerification />,
+      },
+      {
+        path: paths.FORGOT,
+        element: <ForgotPassword />,
       },
     ],
   },

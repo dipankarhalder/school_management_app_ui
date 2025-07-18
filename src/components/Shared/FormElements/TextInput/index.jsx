@@ -1,12 +1,12 @@
 import { Input } from "../../../../Shared/Input";
 import { AppFromField, AppErrorMessage } from "../style";
 
-export const EmailInput = ({
-  name = "email",
-  label = "Email",
-  placeholder = "Enter your email",
+export const TextInput = ({
+  name,
+  label,
+  placeholder = "",
   register,
-  validation,
+  validation = {},
   errors,
 }) => {
   const error = errors?.[name];
@@ -14,8 +14,8 @@ export const EmailInput = ({
   const enhancedValidation = {
     ...validation,
     validate: (value) => {
-      if (value.trim() !== value) {
-        return "Email cannot start or end with spaces";
+      if (typeof value === "string" && value.trim() !== value) {
+        return `${label} cannot start or end with spaces`;
       }
       return (
         (typeof validation.validate === "function" &&
@@ -31,7 +31,7 @@ export const EmailInput = ({
       <Input
         id={name}
         name={name}
-        type="email"
+        type="text"
         placeholder={placeholder}
         {...register(name, enhancedValidation)}
         onBlur={(e) => {
@@ -39,7 +39,6 @@ export const EmailInput = ({
         }}
         aria-invalid={!!error}
         aria-describedby={`${name}-error`}
-        autoComplete="email"
       />
       {error && (
         <AppErrorMessage id={`${name}-error`}>{error.message}</AppErrorMessage>

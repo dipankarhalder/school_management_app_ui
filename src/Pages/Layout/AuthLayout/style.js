@@ -6,10 +6,10 @@ export const AppMainCover = styled.div`
   height: 100vh;
 `;
 
-export const AppBackgroundSec = styled.div`
+export const AppBgSec = styled.div`
   width: 52%;
   height: 100vh;
-  background: url("/authbg.png");
+  background: url(${(props) => props.$image});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
