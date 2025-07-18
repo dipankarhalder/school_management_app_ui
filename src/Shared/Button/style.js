@@ -1,5 +1,10 @@
 import styled, { keyframes } from "styled-components";
-import { fontFamily, backgroundColor, textColor } from "../../styles/mixins";
+import {
+  fontFamily,
+  backgroundColor,
+  borderStyleColor,
+  textColor,
+} from "../../styles/mixins";
 
 const spin = keyframes`
   to {
@@ -12,20 +17,22 @@ export const StyledButton = styled.button`
   width: auto;
   padding: 0 30px;
   ${fontFamily};
-  ${backgroundColor("blue")};
+  ${backgroundColor("btnbg")};
   ${textColor("white")};
   font-weight: 600;
   font-size: 15px;
-  border-radius: 40px;
-  border: 0px solid transparent;
+  border-radius: 6px;
+  text-align: center;
+  ${borderStyleColor(1, "btnborder")}
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   cursor: pointer;
   transition: 0.5s;
 
   &:hover {
-    ${backgroundColor("hblue")};
+    ${backgroundColor("btnhover")};
     transition: 0.5s;
   }
 
