@@ -58,7 +58,7 @@ const signupSchema = yup.object({
   policy: yup.boolean().oneOf([true], MESSAGES.policy.required),
 });
 
-export const Signup = () => {
+export const SignupPage = () => {
   const { addToast } = useContext(ToastContext);
 
   const {
