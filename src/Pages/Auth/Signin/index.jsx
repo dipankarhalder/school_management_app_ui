@@ -1,23 +1,49 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Input } from "../../../Shared/Input";
-import { Checkbox } from "../../../Shared/Checkbox";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import { Button } from "../../../Shared/Button";
+import { Checkbox } from "../../../Shared/Checkbox";
 import { Logo } from "../../../components/common/Logo";
+import { EmailInput } from "../../../components/Shared/FormElements/EmailInput";
+import { PasswordInput } from "../../../components/Shared/FormElements/PasswordInput";
 import { ToastContext } from "../../../Shared/Toast/context/ToastContext";
+
 import {
   AppSignin,
   AppInsideSignin,
   AppHeadingSignin,
   AppFormSignin,
-  AppFromField,
   AppCheckField,
-  AppFormLabel,
-  AppErrorMessage,
   AppBtnField,
   AppLinkCover,
-} from "./style";
+} from "../style";
+
+const MESSAGES = {
+  email: {
+    required: "Please provide a valid email address.",
+    invalid: "Hmm, that doesn't look like a valid email.",
+  },
+  password: {
+    required: "Please provide a valid password.",
+  },
+  success: {
+    title: "Signed In!",
+    description: "You have successfully signed in.",
+  },
+};
+
+const signinSchema = yup.object({
+  email: yup
+    .string()
+    .trim("No leading or trailing spaces allowed.")
+    .strict(true)
+    .email(MESSAGES.email.invalid)
+    .required(MESSAGES.email.required),
+  password: yup.string().required(MESSAGES.password.required),
+});
 
 export const Signin = () => {
   const { addToast } = useContext(ToastContext);
@@ -26,14 +52,16 @@ export const Signin = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(signinSchema),
+  });
 
   const onSubmit = (data) => {
     console.log("Form Data:", data);
     addToast({
       type: "success",
-      title: "Signed In!",
-      description: "You have successfully signed in.",
+      title: MESSAGES.success.title,
+      description: MESSAGES.success.description,
     });
   };
 
@@ -46,39 +74,20 @@ export const Signin = () => {
           <p>Nice to see you again, please enter your details</p>
         </AppHeadingSignin>
         <AppFormSignin onSubmit={handleSubmit(onSubmit)} noValidate>
-          <AppFromField>
-            <AppFormLabel htmlFor="username">Username</AppFormLabel>
-            <Input
-              id="username"
-              name="username"
-              placeholder="Enter your username"
-              {...register("username", { required: "Username is required" })}
-              aria-invalid={errors.username ? "true" : "false"}
-              aria-describedby="username-error"
-            />
-            {errors.username && (
-              <AppErrorMessage id="username-error">
-                {errors.username.message}
-              </AppErrorMessage>
-            )}
-          </AppFromField>
-          <AppFromField>
-            <AppFormLabel htmlFor="password">Password</AppFormLabel>
-            <Input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              {...register("password", { required: "Password is required" })}
-              aria-invalid={errors.password ? "true" : "false"}
-              aria-describedby="password-error"
-            />
-            {errors.password && (
-              <AppErrorMessage id="password-error">
-                {errors.password.message}
-              </AppErrorMessage>
-            )}
-          </AppFromField>
+          <EmailInput
+            name="email"
+            label="Email Address"
+            register={register}
+            errors={errors}
+            placeholder=""
+          />
+          <PasswordInput
+            name="password"
+            label="Password"
+            register={register}
+            errors={errors}
+            placeholder=""
+          />
           <AppCheckField>
             <Checkbox
               id="remember"
@@ -100,3 +109,17 @@ export const Signin = () => {
     </AppSignin>
   );
 };
+
+// for confirm password
+{
+  /* <PasswordField
+  name="confirmPassword"
+  label="Confirm Password"
+  register={register}
+  errors={errors}
+  validation={{
+    required: "Please confirm your password",
+    validate: (val) => val === getValues("password") || "Passwords do not match",
+  }}
+/> */
+}
