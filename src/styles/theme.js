@@ -1,6 +1,6 @@
 export const theme = {
   font: {
-    primary: '"Nunito Sans", sans-serif',
+    primary: '"AvenirNext", sans-serif',
   },
   colors: {
     transparent: "transparent",
@@ -27,5 +27,10 @@ export const theme = {
     dgray: "#454545",
     tableborder: "#d2dbe5",
     tablehead: "#f1f5f9",
+    inputborder: "#D1D9E0",
+    bodytext: "#323232",
+    btnbg: "#1f883d",
+    btnhover: "#398E3D",
+    btnborder: "#3AB640",
   },
 };
