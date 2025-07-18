@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { textColor } from "../../../styles/mixins";
+import { textColor } from "../../styles/mixins";
 
 export const AppSignin = styled.div`
   display: flex;
@@ -14,12 +14,12 @@ export const AppInsideSignin = styled.div`
   flex-direction: column;
   width: 360px;
 
-  span {
+  & > span {
     width: 180px;
     height: 40px;
     margin-bottom: 60px;
 
-    svg {
+    & > svg {
       width: 100%;
       height: auto;
     }
@@ -38,7 +38,7 @@ export const AppHeadingSignin = styled.div`
     margin-bottom: 3px;
   }
 
-  p {
+  & > p {
     font-size: 14px;
     ${textColor("bodytext")};
   }
@@ -50,20 +50,13 @@ export const AppFormSignin = styled.form`
   gap: 15px;
 `;
 
-export const AppFromField = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
 export const AppCheckField = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  a {
+  & > a {
     font-size: 14px;
     font-weight: 600;
     text-decoration: underline;
@@ -71,21 +64,8 @@ export const AppCheckField = styled.div`
   }
 `;
 
-export const AppFormLabel = styled.label`
-  font-size: 15px;
-  ${textColor("bodytext")};
-`;
-
-export const AppErrorMessage = styled.span`
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
-  display: block;
-  ${textColor("error")};
-`;
-
 export const AppBtnField = styled.div`
-  margin: 26px 0 40px;
+  margin: 26px 0 60px;
 `;
 
 export const AppLinkCover = styled.div`
@@ -93,12 +73,12 @@ export const AppLinkCover = styled.div`
   display: flex;
   gap: 10px;
 
-  p {
+  & > p {
     font-size: 14px;
     font-weight: 500;
   }
 
-  a {
+  & > a {
     font-size: 14px;
     font-weight: 600;
     text-decoration: underline;
