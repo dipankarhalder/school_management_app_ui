@@ -13,7 +13,7 @@ export const theme = {
     successbg: "#dffbe7",
     info: "#016ea3",
     infobg: "#e5f4ff",
-    error: "#a20018",
+    error: "#ea0000",
     errorbg: "#ffe4e5",
     secured: "#351e9a",
     securedbg: "#f0e6ff",

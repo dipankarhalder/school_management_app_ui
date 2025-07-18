@@ -36,11 +36,11 @@ export const StyledButton = styled.button`
     transition: 0.5s;
   }
 
-  span {
+  & > span {
     width: 20px;
     height: 20px;
 
-    svg {
+    & > svg {
       width: 20px;
       height: 20px;
     }
@@ -55,7 +55,7 @@ export const StyledButton = styled.button`
     ${backgroundColor("gray")};
     cursor: not-allowed;
 
-    span > svg {
+    & > span > svg {
       animation: ${spin} 2s linear infinite;
     }
   }

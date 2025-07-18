@@ -66,7 +66,7 @@ export const ToastContent = styled.div`
     margin: 0;
   }
 
-  p {
+  & > p {
     ${fontFamily};
     font-size: 14px;
     font-weight: 500;
@@ -88,11 +88,11 @@ export const CloseButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  span {
+  & > span {
     width: 20px;
     height: 20px;
 
-    svg {
+    & > svg {
       width: 20px;
       height: 20px;
     }
