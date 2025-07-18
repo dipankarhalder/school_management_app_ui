@@ -85,3 +85,23 @@ export const AppLinkCover = styled.div`
     ${textColor("blue")};
   }
 `;
+
+export const AppOtpField = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+
+  input {
+    width: 44px;
+    padding: 0px;
+    text-align: center;
+  }
+`;
+
+export const AppOtpErrorMessage = styled.span`
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 0px;
+  display: block;
+  ${textColor("error")};
+`;
