@@ -22,4 +22,6 @@ export const paths = {
   REGISTER: "register",
   FORGOT: "forgot-password",
   OTP: "otp",
+  APPS: "/apps",
+  PROFILE: "profile",
 };

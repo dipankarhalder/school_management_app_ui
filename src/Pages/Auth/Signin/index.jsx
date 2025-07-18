@@ -46,7 +46,7 @@ const signinSchema = yup.object({
   password: yup.string().required(MESSAGES.password.required),
 });
 
-export const Signin = () => {
+export const SigninPage = () => {
   const navigate = useNavigate();
   const { addToast } = useContext(ToastContext);
 
