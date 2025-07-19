@@ -28,7 +28,7 @@ export const AppSidebarInside = styled.div`
   & > span {
     display: flex;
     width: 120px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
     & > svg {
       width: 100%;
@@ -39,12 +39,12 @@ export const AppSidebarInside = styled.div`
 
 export const AppSidebarLinkCover = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
 `;
 
 export const SidebarItem = styled.div`
   width: 100%;
-
   ${({ $expanded }) =>
     $expanded &&
     css`
@@ -53,9 +53,11 @@ export const SidebarItem = styled.div`
 `;
 
 export const SidebarTitle = styled.h4`
-  font-size: 14px;
-  margin-bottom: 10px;
-  ${textColor("textSecondary")};
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  ${textColor("blue")};
   ${fontFamily};
 `;
 
@@ -63,11 +65,11 @@ export const SidebarList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-bottom: 24px;
 `;
 
 export const SidebarListItem = styled.li`
   margin: 0;
-
   ${({ $active }) =>
     $active &&
     css`
@@ -85,26 +87,26 @@ export const SidebarLinkStyled = styled(Link)`
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 9px 0;
+  padding: 8px 0;
   text-decoration: none;
   border-radius: 4px;
   ${textColor("text")};
   ${fontFamily};
 
   & > span {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     ${textColor("dark")};
 
     & > svg {
-      width: 18px;
-      height: 18px;
+      width: 17px;
+      height: 17px;
     }
   }
 
   p {
     margin: 0;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 18px;
     font-weight: 600;
     ${textColor("dark")};
