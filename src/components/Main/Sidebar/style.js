@@ -10,7 +10,7 @@ import {
 export const AppSideBar = styled.div`
   display: flex;
   flex-direction: column;
-  width: 230px;
+  width: 250px;
   height: 100vh;
   padding: 16px 20px;
   overflow-y: auto;
@@ -45,11 +45,7 @@ export const AppSidebarLinkCover = styled.div`
 
 export const SidebarItem = styled.div`
   width: 100%;
-  ${({ $expanded }) =>
-    $expanded &&
-    css`
-      ${backgroundColor("backgroundHover")};
-    `}
+  margin-bottom: 24px;
 `;
 
 export const SidebarTitle = styled.h4`
@@ -65,20 +61,35 @@ export const SidebarList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const SidebarListItem = styled.li`
   margin: 0;
+  position: relative;
+  ${borderStyleColor(1, "transparent")};
+
   ${({ $active }) =>
     $active &&
     css`
-      ${backgroundColor("primaryLight")};
+      ${backgroundColor("navbg")};
       border-radius: 4px;
 
-      a {
-        ${textColor("primary")};
-        font-weight: 500;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 10%;
+        left: -7px;
+        width: 3px;
+        height: 80%;
+        border-radius: 5px;
+        ${backgroundColor("blue")};
+      }
+
+      a > p {
+        ${textColor("black")};
+        font-weight: 600;
       }
     `}
 `;
@@ -87,7 +98,7 @@ export const SidebarLinkStyled = styled(Link)`
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 8px 0;
+  padding: 8px 10px;
   text-decoration: none;
   border-radius: 4px;
   ${textColor("text")};
@@ -96,7 +107,7 @@ export const SidebarLinkStyled = styled(Link)`
   & > span {
     width: 17px;
     height: 17px;
-    ${textColor("dark")};
+    ${textColor("navText")};
 
     & > svg {
       width: 17px;
@@ -109,11 +120,7 @@ export const SidebarLinkStyled = styled(Link)`
     font-size: 14px;
     line-height: 18px;
     font-weight: 600;
-    ${textColor("dark")};
+    ${textColor("navText")};
     ${fontFamily};
-  }
-
-  &:hover {
-    ${backgroundColor("backgroundHover")};
   }
 `;
