@@ -14,10 +14,10 @@ export const AppSideBar = styled.div`
   height: 100vh;
   padding: 16px 20px;
   overflow-y: auto;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 0px;
   ${backgroundColor("sidebar")};
-  ${borderStyleColor(1, "tableborder")};
+  border-right: 1px solid #d2dbe5;
 `;
 
 export const AppSidebarInside = styled.div`

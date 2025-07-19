@@ -6,4 +6,10 @@ export const AppLayoutCover = styled.div`
   height: 100vh;
 `;
 
-export const AppContentArea = styled.div``;
+export const AppContentArea = styled.div`
+  width: calc(100% - 250px);
+  padding: 0px;
+  margin-left: 250px;
+  margin-top: 64px;
+  height: 2000px;
+`;
