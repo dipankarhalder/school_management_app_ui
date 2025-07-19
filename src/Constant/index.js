@@ -17,6 +17,12 @@ export const userRole = {
   STUFF: "staff",
 };
 
+export const locationInfo = [
+  { label: "Durgapur", value: "durgapur" },
+  { label: "Kolkata", value: "kolkata" },
+  { label: "Bangalore", value: "bangalore" },
+];
+
 export const paths = {
   LOGIN: "/",
   REGISTER: "register",
