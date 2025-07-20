@@ -22,7 +22,7 @@ export const TableContainer = styled.div`
             margin-top: 4px;
           }
 
-          &:last-child {
+          &:last-child p {
             display: flex;
             justify-content: flex-end;
           }
@@ -55,12 +55,58 @@ export const TableContainer = styled.div`
     }
     tbody {
       background: ${({ theme }) => theme.colors.white};
+
       tr {
         border-bottom: 1px solid ${({ theme }) => theme.colors.tableborder};
+
         td {
           font-size: 14px;
           padding: 0.5rem 1rem;
+
+          & > span.app_status_actv {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: ${({ theme }) => theme.colors.green};
+            background-color: ${({ theme }) => theme.colors.successbg};
+          }
+
+          & > span.app_status_inactv {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: ${({ theme }) => theme.colors.warning};
+            background-color: ${({ theme }) => theme.colors.warningbg};
+          }
+
+          & > .app_share {
+            gap: 8px;
+            display: flex;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            text-decoration: underline;
+            color: ${({ theme }) => theme.colors.hblue};
+            background: ${({ theme }) => theme.colors.transparent};
+            border: 0px solid ${({ theme }) => theme.colors.transparent};
+
+            & > span {
+              width: 12px;
+              height: 12px;
+
+              & > svg {
+                width: 12px;
+                height: 12px;
+              }
+            }
+          }
         }
+
         &:last-child {
           border-bottom: 0px solid ${({ theme }) => theme.colors.transparent};
         }
@@ -86,7 +132,7 @@ export const ActionTableButton = styled.td`
   justify-content: flex-end;
   gap: 10px;
 
-  button {
+  & > button {
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -119,9 +165,37 @@ export const ActionTableButton = styled.td`
       align-items: center;
 
       & > svg {
-        width: 14px;
-        height: 14px;
+        width: 15px;
+        height: 15px;
       }
     }
   }
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+`;
+
+export const PageInput = styled.input`
+  padding: 6px;
+  width: 100px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+export const PageButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== "active",
+})`
+  padding: 6px 12px;
+  background-color: ${({ active }) => (active ? "#007bff" : "#f0f0f0")};
+  color: ${({ active }) => (active ? "#fff" : "#000")};
+  border: none;
+  border-radius: 4px;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
