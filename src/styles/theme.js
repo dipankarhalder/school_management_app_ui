@@ -7,7 +7,7 @@ export const theme = {
     white: "#ffffff",
     black: "#000000",
 
-    warning: "#e38000",
+    warning: "#be6e05ff",
     warningbg: "#fef3dd",
     success: "#037722",
     successbg: "#dffbe7",
@@ -21,7 +21,7 @@ export const theme = {
     bg: "#ececee",
     green: "#146c2e",
     blue: "#0b57d0",
-    hblue: "#00358a",
+    hblue: "#084bb7ff",
     dark: "#1f1f1f",
     gray: "#747775",
     dgray: "#454545",
