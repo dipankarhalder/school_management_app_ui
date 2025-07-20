@@ -11,5 +11,4 @@ export const AppContentArea = styled.div`
   padding: 0px;
   margin-left: 250px;
   margin-top: 64px;
-  height: 2000px;
 `;
