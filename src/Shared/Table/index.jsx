@@ -1,14 +1,6 @@
 import { useState } from "react";
-import {
-  TableContainer,
-  Table,
-  Thead,
-  Th,
-  Td,
-  Tr,
-  SortIcon,
-  NoData,
-} from "./style";
+import { Edit, Delete, CrossTick, Circle } from "../Icons";
+import { TableContainer, SortIcon, NoData, ActionTableButton } from "./style";
 
 const sortData = (data, key, order) => {
   return [...data].sort((a, b) => {
@@ -26,16 +18,20 @@ const sortData = (data, key, order) => {
   });
 };
 
-export const TableInfo = ({ data, sortableColumns = [] }) => {
+export const TableInfo = ({
+  data,
+  enableStatus = false,
+  sortableColumns = [],
+  onAction = () => {},
+}) => {
   const [sortKey, setSortKey] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
 
   if (!data || data.length === 0) {
-    return <NoData>No student records found.</NoData>;
+    return <NoData>No data available at this time.</NoData>;
   }
 
   const headers = Object.keys(data[0]);
-
   const handleSort = (key) => {
     if (!sortableColumns.includes(key)) return;
     if (key === sortKey) {
@@ -47,37 +43,60 @@ export const TableInfo = ({ data, sortableColumns = [] }) => {
   };
 
   const sortedData = sortKey ? sortData(data, sortKey, sortOrder) : data;
-
   const getSortIcon = (key) => {
-    if (key !== sortKey) return null;
-    return sortOrder === "asc" ? "▲" : "▼";
+    if (!sortableColumns.includes(key)) return null;
+    return key === sortKey ? (sortOrder === "asc" ? "▲" : "▼") : "⇵";
   };
 
   return (
     <TableContainer>
-      <Table>
-        <Thead>
-          <Tr>
+      <table>
+        <thead>
+          <tr>
             {headers.map((key) => (
-              <Th key={key} onClick={() => handleSort(key)}>
-                {key.replace(/_/g, " ").toUpperCase()}
-                {sortableColumns.includes(key) && (
-                  <SortIcon>{getSortIcon(key)}</SortIcon>
-                )}
-              </Th>
+              <th key={key} onClick={() => handleSort(key)}>
+                <p>
+                  {key.replace(/_/g, " ").toUpperCase()}
+                  {sortableColumns.includes(key) && (
+                    <SortIcon>{getSortIcon(key)}</SortIcon>
+                  )}
+                </p>
+              </th>
             ))}
-          </Tr>
-        </Thead>
+            <th>
+              <p>ACTIONS</p>
+            </th>
+          </tr>
+        </thead>
         <tbody>
-          {sortedData.map((student) => (
-            <Tr key={student.id}>
+          {sortedData.map((item) => (
+            <tr key={item.id}>
               {headers.map((key) => (
-                <Td key={key}>{student[key]}</Td>
+                <td key={key}>{item[key]}</td>
               ))}
-            </Tr>
+              <ActionTableButton>
+                {enableStatus && item.status && (
+                  <button
+                    className="status"
+                    onClick={() => onAction("status", item)}
+                  >
+                    {item.status ? <CrossTick /> : <Circle />}
+                  </button>
+                )}
+                <button className="edit" onClick={() => onAction("edit", item)}>
+                  <Edit />
+                </button>
+                <button
+                  className="delete"
+                  onClick={() => onAction("delete", item)}
+                >
+                  <Delete />
+                </button>
+              </ActionTableButton>
+            </tr>
           ))}
         </tbody>
-      </Table>
+      </table>
     </TableContainer>
   );
 };
