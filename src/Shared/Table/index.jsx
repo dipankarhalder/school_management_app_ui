@@ -1,24 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import * as XLSX from "xlsx";
-import {
-  Share,
-  Edit,
-  Delete,
-  CrossTick,
-  Circle,
-  Uarrow,
-  Darrow,
-  ActiveFilter,
-} from "../Icons";
+import { Uarrow, Darrow, ActiveFilter } from "../Icons";
 import {
   TableContainer,
   SortIcon,
   NoData,
-  ActionTableButton,
   PaginationContainer,
   PageButton,
   PageInput,
 } from "./style";
+import TableRowItem from "./TableRowItem";
 
 const sortData = (data, key, order) => {
   return [...data].sort((a, b) => {
@@ -82,43 +73,49 @@ export const TableInfo = ({
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [selectedRows, setSelectedRows] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const dataInformations = data.length > 0 ? Object.keys(data[0]) : [];
+  const dataInformations = useMemo(
+    () => (data.length > 0 ? Object.keys(data[0]) : []),
+    [data]
+  );
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
     setCurrentPage(1);
   };
 
-  const filteredData = data.filter((item) =>
-    dataInformations.some((key) =>
-      String(item[key]).toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  const filteredData = useMemo(() => {
+    return data.filter((item) =>
+      dataInformations.some((key) =>
+        String(item[key]).toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [data, dataInformations, searchTerm]);
 
-  const sortedData = sortKey
-    ? sortData(filteredData, sortKey, sortOrder)
-    : filteredData;
+  const sortedData = useMemo(() => {
+    return sortKey ? sortData(filteredData, sortKey, sortOrder) : filteredData;
+  }, [filteredData, sortKey, sortOrder]);
 
   const totalPages = Math.ceil(sortedData.length / itemsPerPage);
   const startItem = (currentPage - 1) * itemsPerPage + 1;
   const endItem = Math.min(currentPage * itemsPerPage, sortedData.length);
 
-  const paginatedData = sortedData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+  const paginatedData = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return sortedData.slice(start, start + itemsPerPage);
+  }, [sortedData, currentPage, itemsPerPage]);
+
+  const isAllSelected = useMemo(
+    () => paginatedData.every((item) => selectedRows.includes(item.id)),
+    [paginatedData, selectedRows]
   );
 
-  const isAllSelected = paginatedData.every((item) =>
-    selectedRows.includes(item.id)
-  );
-
-  const toggleRow = (id) => {
+  const toggleRow = useCallback((id) => {
     setSelectedRows((prev) =>
       prev.includes(id) ? prev.filter((rowId) => rowId !== id) : [...prev, id]
     );
-  };
+  }, []);
 
-  const toggleAll = () => {
+  const toggleAll = useCallback(() => {
     if (isAllSelected) {
       setSelectedRows((prev) =>
         prev.filter((id) => !paginatedData.some((item) => item.id === id))
@@ -127,7 +124,7 @@ export const TableInfo = ({
       const newIds = paginatedData.map((item) => item.id);
       setSelectedRows((prev) => Array.from(new Set([...prev, ...newIds])));
     }
-  };
+  }, [paginatedData, isAllSelected]);
 
   const handleSort = (key) => {
     if (!sortableColumns.includes(key)) return;
@@ -160,9 +157,9 @@ export const TableInfo = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedInput(inputPage);
-    }, 500);
+    }, 300);
     return () => clearTimeout(timer);
-  }, [inputPage]);
+  }, [inputPage, searchTerm]);
 
   useEffect(() => {
     const pageNum = parseInt(debouncedInput);
@@ -171,22 +168,25 @@ export const TableInfo = ({
     }
   }, [debouncedInput, totalPages]);
 
+  const getSortIcon = useCallback(
+    (key) => {
+      if (!sortableColumns.includes(key)) return null;
+      return key === sortKey ? (
+        sortOrder === "asc" ? (
+          <Uarrow />
+        ) : (
+          <Darrow />
+        )
+      ) : (
+        <ActiveFilter />
+      );
+    },
+    [sortKey, sortOrder, sortableColumns]
+  );
+
   if (!data || data.length === 0) {
     return <NoData>No data available at this time.</NoData>;
   }
-
-  const getSortIcon = (key) => {
-    if (!sortableColumns.includes(key)) return null;
-    return key === sortKey ? (
-      sortOrder === "asc" ? (
-        <Uarrow />
-      ) : (
-        <Darrow />
-      )
-    ) : (
-      <ActiveFilter />
-    );
-  };
 
   return (
     <>
@@ -234,61 +234,16 @@ export const TableInfo = ({
           </thead>
           <tbody>
             {paginatedData.map((item) => (
-              <tr key={item.id}>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={selectedRows.includes(item.id)}
-                    onChange={() => toggleRow(item.id)}
-                  />
-                </td>
-                {dataInformations.map((key) => {
-                  return key === "status" ? (
-                    <td key={key}>
-                      <span
-                        className={
-                          item[key] ? "app_status_actv" : "app_status_inactv"
-                        }
-                      >
-                        {item[key] ? "Active" : "In-active"}
-                      </span>
-                    </td>
-                  ) : key === viewBtn ? (
-                    <td key={key}>
-                      <button
-                        className="app_share"
-                        onClick={() => onAction("view", item)}
-                      >
-                        {item[key].toString()} <Share />
-                      </button>
-                    </td>
-                  ) : (
-                    <td key={key}>{item[key]}</td>
-                  );
-                })}
-                <ActionTableButton>
-                  {enableStatus && (
-                    <button
-                      className="status"
-                      onClick={() => onAction("status", item)}
-                    >
-                      {item.status ? <CrossTick /> : <Circle />}
-                    </button>
-                  )}
-                  <button
-                    className="edit"
-                    onClick={() => onAction("edit", item)}
-                  >
-                    <Edit />
-                  </button>
-                  <button
-                    className="delete"
-                    onClick={() => onAction("delete", item)}
-                  >
-                    <Delete />
-                  </button>
-                </ActionTableButton>
-              </tr>
+              <TableRowItem
+                key={item.id}
+                item={item}
+                headers={dataInformations}
+                viewBtn={viewBtn}
+                enableStatus={enableStatus}
+                selected={selectedRows.includes(item.id)}
+                onToggleRow={toggleRow}
+                onAction={onAction}
+              />
             ))}
           </tbody>
         </table>
