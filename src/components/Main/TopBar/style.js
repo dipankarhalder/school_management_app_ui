@@ -27,12 +27,69 @@ export const AppMainItemSection = styled.div`
 
 export const AppLocationDropDown = styled.div`
   display: flex;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+  border-radius: 6px;
+  padding-left: 4px;
+
+  & > span {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > svg {
+      width: 17px;
+      height: 17px;
+    }
+  }
+`;
+
+export const AppDropDownItem = styled.div`
+  position: relative;
+  display: flex;
 
   & > select {
-    height: 34px;
+    height: 32px;
     font-size: 13px;
     fonty-weight: 600;
-    margin-left: 40px;
+    width: auto;
+    height: 32px;
+    padding: 0 40px 0 4px;
+    background: transparent;
+    border: 0px solid transparent;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  & > span {
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+
+    & > svg {
+      width: 17px;
+      height: 17px;
+    }
+  }
+`;
+
+export const AppLoginTime = styled.div`
+  display: flex;
+  margin-left: 30px;
+
+  & > span {
+    height: 32px;
+    line-height: 34px;
+    font-size: 12px;
+    font-weight: 600;
   }
 `;
 

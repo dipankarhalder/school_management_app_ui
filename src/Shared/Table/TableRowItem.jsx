@@ -1,5 +1,5 @@
 import React from "react";
-import { Share, Edit, Delete, CrossTick, Circle } from "../Icons";
+import { Share, Edit, Delete, CheckVerify, CheckPlus } from "../Icons";
 import { ActionTableButton } from "./style";
 
 const TableRowItem = React.memo(
@@ -21,7 +21,6 @@ const TableRowItem = React.memo(
             onChange={() => onToggleRow(item.id)}
           />
         </td>
-
         {headers.map((key) => {
           if (key === "status") {
             return (
@@ -36,7 +35,6 @@ const TableRowItem = React.memo(
               </td>
             );
           }
-
           if (key === viewBtn) {
             return (
               <td key={key}>
@@ -56,36 +54,22 @@ const TableRowItem = React.memo(
                       }}
                     />
                   ) : (
-                    <span
-                      style={{
-                        width: "32px",
-                        height: "32px",
-                        borderRadius: "50%",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        backgroundColor: "#007bff",
-                        color: "#fff",
-                        fontWeight: "bold",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {item.name?.charAt(0) || "?"}
-                    </span>
+                    <div className="app_fallback">{item.name?.charAt(0)}</div>
                   )}
-                  {item[key].toString()} <Share />
+                  <p>{item[key].toString()}</p> <Share />
                 </button>
               </td>
             );
           }
-
           return <td key={key}>{item[key]}</td>;
         })}
-
         <ActionTableButton>
           {enableStatus && (
-            <button className="status" onClick={() => onAction("status", item)}>
-              {item.status ? <CrossTick /> : <Circle />}
+            <button
+              className={item.status ? "status" : "update_status"}
+              onClick={() => onAction("status", item)}
+            >
+              {item.status ? <CheckVerify /> : <CheckPlus />}
             </button>
           )}
           <button className="edit" onClick={() => onAction("edit", item)}>

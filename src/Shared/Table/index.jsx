@@ -1,7 +1,19 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import * as XLSX from "xlsx";
-import { Uarrow, Darrow, ActiveFilter } from "../Icons";
 import {
+  Uarrow,
+  Darrow,
+  ActiveFilter,
+  Rarrow,
+  Search,
+  Download,
+  Delete,
+} from "../Icons";
+import {
+  TableSearchBtn,
+  TablePageHeading,
+  TableSearch,
+  TableSearchInside,
   TableContainer,
   SortIcon,
   NoData,
@@ -9,6 +21,7 @@ import {
   PageButton,
   PageInput,
 } from "./style";
+import { Breadcrumb } from "../Breadcrumb";
 import TableRowItem from "./TableRowItem";
 
 const sortData = (data, key, order) => {
@@ -59,6 +72,8 @@ const generatePagination = (totalPages, currentPage) => {
 };
 
 export const TableInfo = ({
+  pageTitle,
+  pagePath,
   data,
   viewBtn,
   enableStatus = false,
@@ -190,22 +205,39 @@ export const TableInfo = ({
 
   return (
     <>
-      <div style={{ marginBottom: "1rem" }}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          style={{
-            width: "100%",
-            padding: "8px 12px",
-            borderRadius: "4px",
-            border: "1px solid #ccc",
-            fontSize: "14px",
-          }}
-        />
-      </div>
-
+      <TableSearchBtn>
+        <TablePageHeading>
+          <h1>{pageTitle}</h1>
+          <Breadcrumb items={pagePath} separator={<Rarrow />} />
+        </TablePageHeading>
+        <TableSearch>
+          <TableSearchInside>
+            <input
+              id="search_item"
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+            <Search />
+          </TableSearchInside>
+          {selectedRows.length ? (
+            <>
+              <button className="app_export" onClick={handleExport}>
+                <Download /> <p>Export</p>
+              </button>
+              <button
+                className="app_delete"
+                onClick={() => onAction("delete", selectedRows)}
+              >
+                <Delete /> <p>Delete</p>
+              </button>
+            </>
+          ) : (
+            ""
+          )}
+        </TableSearch>
+      </TableSearchBtn>
       <TableContainer>
         <table>
           <thead>
@@ -335,20 +367,6 @@ export const TableInfo = ({
           Selected {selectedRows.length} item
           {selectedRows.length !== 1 ? "s" : ""}
         </div>
-        <button
-          disabled={selectedRows.length === 0}
-          onClick={handleExport}
-          style={{
-            padding: "8px 16px",
-            borderRadius: "4px",
-            border: "none",
-            backgroundColor: selectedRows.length === 0 ? "#ccc" : "#007bff",
-            color: "#fff",
-            cursor: selectedRows.length === 0 ? "not-allowed" : "pointer",
-          }}
-        >
-          Export Selected
-        </button>
       </div>
     </>
   );
