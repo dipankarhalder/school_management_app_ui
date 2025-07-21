@@ -62,6 +62,12 @@ export const AppDropDownItem = styled.div`
     border: 0px solid transparent;
     appearance: none;
     -webkit-appearance: none;
+    position: relative;
+    z-index: 2;
+
+    &:focus-visible {
+      outline: -webkit-focus-ring-color auto 0px;
+    }
   }
 
   & > span {
@@ -73,6 +79,7 @@ export const AppDropDownItem = styled.div`
     position: absolute;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 
     & > svg {
       width: 17px;

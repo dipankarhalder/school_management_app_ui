@@ -26,6 +26,7 @@ import {
   Calender,
   Teach,
   Staff,
+  Location,
 } from "../Shared/Icons";
 import { paths } from "../Constant";
 
@@ -38,6 +39,7 @@ export const sidebarLink = [
       { id: 2, title: "Admission", path: paths.ADMISSION, icon: Edit },
       { id: 3, title: "Events", path: paths.EVENTS, icon: Event },
       { id: 4, title: "Courses", path: paths.COURSES, icon: Course },
+      { id: 5, title: "Locations", path: paths.LOCATIONS, icon: Location },
     ],
   },
   {
@@ -67,7 +69,7 @@ export const sidebarLink = [
     children: [
       { id: 1, title: "Teachers", path: paths.TEACHER, icon: Teach },
       { id: 2, title: "Stuffs", path: paths.STUFF, icon: Staff },
-      { id: 3, title: "Human Resources", path: paths.HUMAN, icon: Patients },
+      // { id: 3, title: "Human Resources", path: paths.HUMAN, icon: Patients },
       {
         id: 4,
         title: "Study Materials",
@@ -88,7 +90,7 @@ export const sidebarLink = [
     children: [
       {
         id: 1,
-        title: "Student Informations",
+        title: "Students",
         path: paths.STUDENT,
         icon: Teams,
       },

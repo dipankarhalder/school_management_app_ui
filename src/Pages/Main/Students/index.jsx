@@ -15,23 +15,31 @@ export const StudentsPage = () => {
     console.log(`Action: ${action}`, student);
   };
 
+  const handleAddItems = (isopen) => {
+    console.log(isopen);
+  };
+
   const studentTableData =
     studentData &&
     studentData.map((item) => ({
       id: item.id,
       name: item.name,
+      image: item.image,
       sec: item.section,
       status: item.mobile % 2 === 0 ? true : false,
       dob: item.dob,
       phone: item.mobile,
       email: item.email,
+      gender: item.gender,
       department: item.department,
       parent_name: item.parent_name,
       address: item.address,
     }));
 
   const tableHeaders =
-    studentTableData.length > 0 ? Object.keys(studentTableData[0]) : [];
+    studentTableData.length > 0
+      ? Object.keys(studentTableData[0]).filter((key) => key !== "image")
+      : [];
 
   const [visibleColumns, setVisibleColumns] = useState(() =>
     tableHeaders.reduce((acc, col) => {
@@ -44,6 +52,7 @@ export const StudentsPage = () => {
     const handleResize = () => {
       setVisibleColumns((prev) => ({
         ...prev,
+        dob: false,
         parent_name: false,
         address: false,
       }));
@@ -62,6 +71,8 @@ export const StudentsPage = () => {
           pageTitle={"Manage Students"}
           pagePath={pagePaths}
           data={studentTableData}
+          addTextItem={"Add New Student"}
+          handleAddItems={handleAddItems}
           sortableColumns={[
             "id",
             "name",
@@ -72,6 +83,7 @@ export const StudentsPage = () => {
           ]}
           viewBtn={"name"}
           enableStatus={true}
+          filterableColumns={["gender", "department", "status", "sec"]}
           visibleColumns={visibleColumns}
           onToggleColumn={(col) =>
             setVisibleColumns((prev) => ({

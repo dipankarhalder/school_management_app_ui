@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { textColor } from "../../styles/mixins";
 
 export const BreadcrumbNav = styled.nav`
-  font-size: 11px;
-  margin: 2px 0 0;
+  font-size: 12px;
+  margin: 0;
 `;
 
 export const BreadcrumbList = styled.ul`
@@ -35,7 +35,7 @@ export const BreadcrumbItem = styled.li`
 export const BreadcrumbLink = styled(Link)`
   ${textColor("blue")};
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 
   &:hover {
     text-decoration: underline;
@@ -44,5 +44,5 @@ export const BreadcrumbLink = styled(Link)`
 
 export const BreadcrumbText = styled.p`
   ${textColor("gray")};
-  font-weight: 500;
+  font-weight: 600;
 `;

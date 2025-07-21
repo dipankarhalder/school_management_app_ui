@@ -2,7 +2,7 @@ import React from "react";
 import { Share, Edit, Delete, CheckVerify, CheckPlus } from "../Icons";
 import { ActionTableButton } from "./style";
 
-const TableRowItem = React.memo(
+export const TableRowItem = React.memo(
   ({
     item,
     dataTableInfo,
@@ -46,16 +46,9 @@ const TableRowItem = React.memo(
                   onClick={() => onAction("view", item)}
                 >
                   {item.image ? (
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      style={{
-                        width: "32px",
-                        height: "32px",
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                      }}
-                    />
+                    <div className="app_table_image">
+                      <img src={item.image} alt={item.name} />
+                    </div>
                   ) : (
                     <div className="app_fallback">{item.name?.charAt(0)}</div>
                   )}
@@ -86,5 +79,3 @@ const TableRowItem = React.memo(
     );
   }
 );
-
-export default TableRowItem;
