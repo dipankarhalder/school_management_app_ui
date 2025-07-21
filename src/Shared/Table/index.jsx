@@ -8,6 +8,7 @@ import {
   Search,
   Download,
   Delete,
+  ColumnOption,
 } from "../Icons";
 import {
   TableSearchBtn,
@@ -15,11 +16,13 @@ import {
   TableSearch,
   TableSearchInside,
   TableContainer,
+  TableColumnEnableOption,
   SortIcon,
   NoData,
-  PaginationContainer,
+  AppPaginationCover,
+  AppPaginationLeftSide,
+  AppPaginationRightSide,
   PageButton,
-  PageInput,
 } from "./style";
 import { Breadcrumb } from "../Breadcrumb";
 import TableRowItem from "./TableRowItem";
@@ -76,6 +79,8 @@ export const TableInfo = ({
   pagePath,
   data,
   viewBtn,
+  visibleColumns,
+  onToggleColumn,
   enableStatus = false,
   sortableColumns = [],
   onAction = () => {},
@@ -221,6 +226,25 @@ export const TableInfo = ({
             />
             <Search />
           </TableSearchInside>
+          <TableColumnEnableOption>
+            <button>
+              <ColumnOption />
+            </button>
+            <div className="dropdown_content">
+              <div className="dropdown_inside">
+                {dataInformations.map((col) => (
+                  <label key={col}>
+                    <input
+                      type="checkbox"
+                      checked={visibleColumns[col]}
+                      onChange={() => onToggleColumn(col)}
+                    />
+                    {col.replace(/_/g, " ")}
+                  </label>
+                ))}
+              </div>
+            </div>
+          </TableColumnEnableOption>
           {selectedRows.length ? (
             <>
               <button className="app_export" onClick={handleExport}>
@@ -238,6 +262,7 @@ export const TableInfo = ({
           )}
         </TableSearch>
       </TableSearchBtn>
+
       <TableContainer>
         <table>
           <thead>
@@ -249,16 +274,18 @@ export const TableInfo = ({
                   checked={isAllSelected}
                 />
               </th>
-              {dataInformations.map((key) => (
-                <th key={key} onClick={() => handleSort(key)}>
-                  <p>
-                    {key.replace(/_/g, " ").toUpperCase()}
-                    {sortableColumns.includes(key) && (
-                      <SortIcon>{getSortIcon(key)}</SortIcon>
-                    )}
-                  </p>
-                </th>
-              ))}
+              {dataInformations.map((key) =>
+                visibleColumns[key] ? (
+                  <th key={key} onClick={() => handleSort(key)}>
+                    <p>
+                      {key.replace(/_/g, " ").toUpperCase()}
+                      {sortableColumns.includes(key) && (
+                        <SortIcon>{getSortIcon(key)}</SortIcon>
+                      )}
+                    </p>
+                  </th>
+                ) : null
+              )}
               <th>
                 <p>ACTIONS</p>
               </th>
@@ -268,8 +295,9 @@ export const TableInfo = ({
             {paginatedData.map((item) => (
               <TableRowItem
                 key={item.id}
+                visibleColumns={visibleColumns}
                 item={item}
-                headers={dataInformations}
+                dataTableInfo={dataInformations}
                 viewBtn={viewBtn}
                 enableStatus={enableStatus}
                 selected={selectedRows.includes(item.id)}
@@ -281,93 +309,95 @@ export const TableInfo = ({
         </table>
       </TableContainer>
 
-      <PaginationContainer>
-        <PageButton
-          onClick={() => handlePageChange(1)}
-          disabled={currentPage === 1}
-        >
-          «
-        </PageButton>
-        <PageButton
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          ‹
-        </PageButton>
-        {generatePagination(totalPages, currentPage).map((page, i) =>
-          page === "..." ? (
-            <span key={`ellipsis-${i}`}>...</span>
-          ) : (
-            <PageButton
-              key={`page-${page}`}
-              active={page === currentPage}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </PageButton>
-          )
-        )}
-        <PageButton
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          ›
-        </PageButton>
-        <PageButton
-          onClick={() => handlePageChange(totalPages)}
-          disabled={currentPage === totalPages}
-        >
-          »
-        </PageButton>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <PageInput
-            type="number"
-            min="1"
-            max={totalPages}
-            value={inputPage}
-            onChange={handleInputChange}
-            placeholder="Go to page"
-          />
-        </form>
-        <label>
-          Show&nbsp;
-          <select
-            value={itemsPerPage}
-            onChange={(e) => {
-              setItemsPerPage(parseInt(e.target.value));
-              setCurrentPage(1);
-            }}
-          >
-            {Array.from(
-              { length: Math.ceil(Math.min(data.length, 100) / 10) },
-              (_, i) => (i + 1) * 10
-            ).map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          &nbsp;items
-        </label>
-      </PaginationContainer>
+      <AppPaginationCover>
+        <AppPaginationLeftSide>
+          <span>
+            {selectedRows.length} of {sortedData.length} row(s) selected
+          </span>
+        </AppPaginationLeftSide>
+        <AppPaginationRightSide>
+          <div className="app_pager_dropdown">
+            <p>Rows per page</p>
+            <div className="app_select_cover">
+              <select
+                id="page_selection"
+                value={itemsPerPage}
+                onChange={(e) => {
+                  setItemsPerPage(parseInt(e.target.value));
+                  setCurrentPage(1);
+                }}
+              >
+                {Array.from(
+                  { length: Math.ceil(Math.min(data.length, 100) / 10) },
+                  (_, i) => (i + 1) * 10
+                ).map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <Darrow />
+            </div>
+          </div>
 
-      <span style={{ marginLeft: "auto" }}>
-        Showing {startItem}–{endItem} of {sortedData.length}
-      </span>
-      <div
-        style={{
-          marginTop: "1rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "1rem",
-        }}
-      >
-        <div>
-          Selected {selectedRows.length} item
-          {selectedRows.length !== 1 ? "s" : ""}
-        </div>
-      </div>
+          <div className="app_pagination_container">
+            <div className="app_pager_showing_items">
+              <p>
+                Page {startItem}–{endItem} of {sortedData.length}
+              </p>
+            </div>
+            <PageButton
+              onClick={() => handlePageChange(1)}
+              disabled={currentPage === 1}
+            >
+              «
+            </PageButton>
+            <PageButton
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              ‹
+            </PageButton>
+            {generatePagination(totalPages, currentPage).map((page, i) =>
+              page === "..." ? (
+                <span key={`ellipsis-${i}`}>...</span>
+              ) : (
+                <PageButton
+                  key={`page-${page}`}
+                  active={page === currentPage}
+                  onClick={() => handlePageChange(page)}
+                >
+                  {page}
+                </PageButton>
+              )
+            )}
+            <PageButton
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              ›
+            </PageButton>
+            <PageButton
+              onClick={() => handlePageChange(totalPages)}
+              disabled={currentPage === totalPages}
+            >
+              »
+            </PageButton>
+          </div>
+          <div className="app_quick_paginate">
+            <p>Quick Paginate</p>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="number"
+                min="1"
+                max={totalPages}
+                value={inputPage}
+                onChange={handleInputChange}
+              />
+            </form>
+          </div>
+        </AppPaginationRightSide>
+      </AppPaginationCover>
     </>
   );
 };

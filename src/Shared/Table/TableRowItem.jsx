@@ -5,7 +5,8 @@ import { ActionTableButton } from "./style";
 const TableRowItem = React.memo(
   ({
     item,
-    headers,
+    dataTableInfo,
+    visibleColumns,
     viewBtn,
     enableStatus,
     selected,
@@ -21,7 +22,9 @@ const TableRowItem = React.memo(
             onChange={() => onToggleRow(item.id)}
           />
         </td>
-        {headers.map((key) => {
+        {dataTableInfo.map((key) => {
+          if (!visibleColumns[key]) return null;
+
           if (key === "status") {
             return (
               <td key={key}>
