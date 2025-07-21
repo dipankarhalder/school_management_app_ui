@@ -287,6 +287,24 @@ export const TableContainer = styled.div`
               }
             }
 
+            .app_table_image {
+              width: 28px;
+              height: 28px;
+              overflow: hidden;
+              border-radius: 50%;
+              text-align: center;
+              text-decoration: none;
+              border: 1px solid #d0d7de;
+              box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+              & > img {
+                display: flex;
+                width: 26px;
+                height: 26px;
+                object-fit: cover;
+              }
+            }
+
             .app_fallback {
               width: 28px;
               height: 28px;
@@ -294,7 +312,7 @@ export const TableContainer = styled.div`
               font-size: 12px;
               font-weight: 700;
               text-align: center;
-              line-height: 26px;
+              line-height: 28px;
               background: #f6f8fa;
               text-decoration: none;
               border: 1px solid #d0d7de;

@@ -20,6 +20,7 @@ import { HostelPage } from "../Pages/Main/Hostel";
 import { HumanResourcesPage } from "../Pages/Main/HumanResources";
 import { InvoicePage } from "../Pages/Main/Invoice";
 import { LaboratoryPage } from "../Pages/Main/Laboratory";
+import { LocationsPage } from "../Pages/Main/Locations";
 import { LibraryPage } from "../Pages/Main/Library";
 import { NoticesPage } from "../Pages/Main/Notices";
 import { OtpVerificationPage } from "../Pages/Auth/OTP";
@@ -120,6 +121,10 @@ export const router = createBrowserRouter([
       {
         path: paths.LABORATORY,
         element: <LaboratoryPage />,
+      },
+      {
+        path: paths.LOCATIONS,
+        element: <LocationsPage />,
       },
       {
         path: paths.LIBRARY,

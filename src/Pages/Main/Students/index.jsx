@@ -20,18 +20,22 @@ export const StudentsPage = () => {
     studentData.map((item) => ({
       id: item.id,
       name: item.name,
+      image: item.image,
       sec: item.section,
       status: item.mobile % 2 === 0 ? true : false,
       dob: item.dob,
       phone: item.mobile,
       email: item.email,
+      gender: item.gender,
       department: item.department,
       parent_name: item.parent_name,
       address: item.address,
     }));
 
   const tableHeaders =
-    studentTableData.length > 0 ? Object.keys(studentTableData[0]) : [];
+    studentTableData.length > 0
+      ? Object.keys(studentTableData[0]).filter((key) => key !== "image")
+      : [];
 
   const [visibleColumns, setVisibleColumns] = useState(() =>
     tableHeaders.reduce((acc, col) => {
@@ -44,6 +48,7 @@ export const StudentsPage = () => {
     const handleResize = () => {
       setVisibleColumns((prev) => ({
         ...prev,
+        dob: false,
         parent_name: false,
         address: false,
       }));

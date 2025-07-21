@@ -25,7 +25,7 @@ import {
   PageButton,
 } from "./style";
 import { Breadcrumb } from "../Breadcrumb";
-import TableRowItem from "./TableRowItem";
+import { TableRowItem } from "./TableRowItem";
 
 const sortData = (data, key, order) => {
   return [...data].sort((a, b) => {
