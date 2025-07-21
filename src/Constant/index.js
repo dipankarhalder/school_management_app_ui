@@ -23,6 +23,13 @@ export const locationInfo = [
   { label: "Bangalore", value: "bangalore" },
 ];
 
+export const breakpoints = {
+  xs: 960,
+  sm: 1024,
+  md: 1200,
+  lg: 1580,
+};
+
 export const paths = {
   LOGIN: "/",
   REGISTER: "register",

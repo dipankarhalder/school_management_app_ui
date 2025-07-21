@@ -9,6 +9,7 @@ export const NoData = styled.div`
 export const TableSearchBtn = styled.div`
   display: flex;
   width: 100%;
+  margin-bottom: 16px;
 `;
 
 export const TablePageHeading = styled.div`
@@ -36,7 +37,6 @@ export const TableSearch = styled.div`
     padding: 8px 14px;
     border-radius: 6px;
     align-items: center;
-    color: #ffffff;
     background: #f6f8fa;
     border: 1px solid #d0d7de;
     box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
@@ -108,14 +108,82 @@ export const TableSearchInside = styled.div`
   }
 `;
 
+export const TableColumnEnableOption = styled.div`
+  display: flex;
+  width: 34px;
+  height: 34px;
+  position: relative;
+
+  & > button {
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+    &:hover {
+      background: #eef7fbff;
+    }
+
+    & > span {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > svg {
+        width: 17px;
+        height: 17px;
+        margin-top: -1px;
+        margin-left: -1px;
+      }
+    }
+  }
+
+  .dropdown_content {
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    width: 150px;
+    padding-top: 8px;
+    display: none;
+
+    .dropdown_inside {
+      width: 100%;
+      display: flex;
+      border-radius: 6px;
+      flex-direction: column;
+      padding: 10px 14px;
+      border: 1px solid ${({ theme }) => theme.colors.tableborder};
+      background: ${({ theme }) => theme.colors.white};
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &:hover .dropdown_content {
+    display: flex;
+  }
+`;
+
 export const TableContainer = styled.div`
   width: 100%;
   border-radius: 6px;
-  overflow: hidden;
+  overflow-x: auto;
   border: 1px solid ${({ theme }) => theme.colors.tableborder};
+  -webkit-overflow-scrolling: touch;
 
   table {
     width: 100%;
+    min-width: 900px;
 
     thead {
       tr {
@@ -205,6 +273,7 @@ export const TableContainer = styled.div`
             & > p {
               font-size: 14px;
               font-weight: 600;
+              text-align: left;
               text-decoration: underline;
             }
 
@@ -300,30 +369,141 @@ export const ActionTableButton = styled.td`
   }
 `;
 
-export const PaginationContainer = styled.div`
+export const AppPaginationCover = styled.div`
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 1rem;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 16px;
 `;
 
-export const PageInput = styled.input`
-  padding: 6px;
-  width: 100px;
-  margin-left: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+export const AppPaginationLeftSide = styled.div`
+  display: flex;
+  width: auto;
+
+  & > span {
+    font-size: 13px;
+    font-weight: 600;
+  }
+`;
+
+export const AppPaginationRightSide = styled.div`
+  display: flex;
+  width: auto;
+  align-items: center;
+  gap: 50px;
+
+  .app_pager_dropdown {
+    display: flex;
+    width: auto;
+    align-items: center;
+    gap: 10px;
+
+    & > p {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .app_select_cover {
+      position: relative;
+      display: flex;
+      border-radius: 6px;
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+      & > select {
+        height: 30px;
+        font-size: 13px;
+        font-weight: 600;
+        width: auto;
+        padding: 0 30px 0 10px;
+        background: transparent;
+        border: 0px solid transparent;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+
+      & > span {
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+
+        & > svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+
+  .app_pagination_container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+
+    & > span {
+      height: 30px;
+      width: 30px;
+      text-align: center;
+    }
+
+    .app_pager_showing_items {
+      display: flex;
+      height: 32px;
+      align-items: center;
+      margin-right: 6px;
+
+      & > p {
+        font-size: 13px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .app_quick_paginate {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > p {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    & > form > input {
+      height: 32px;
+      font-size: 13px;
+      font-weight: 600;
+      width: 32px;
+      border-radius: 6px;
+      text-align: center;
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+    }
+  }
 `;
 
 export const PageButton = styled.button.withConfig({
   shouldForwardProp: (prop) => prop !== "active",
 })`
-  padding: 6px 12px;
-  background-color: ${({ active }) => (active ? "#007bff" : "#f0f0f0")};
-  color: ${({ active }) => (active ? "#fff" : "#000")};
+  height: 30px;
+  width: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  background: ${({ active }) => (active ? "#dce3e9" : "transparent")};
+  color: ${({ active }) => (active ? "#000000" : "#787878ff")};
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  border: 1px solid #d0d7de;
+  box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
 `;
