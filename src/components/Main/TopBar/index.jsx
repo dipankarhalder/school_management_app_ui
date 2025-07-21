@@ -1,31 +1,33 @@
-import { PageHeading } from "../../../components/Shared/Heading";
-import { Breadcrumb } from "../../../Shared/Breadcrumb";
-import { Rarrow, Info, Notification } from "../../../Shared/Icons";
+import { Info, Notification, Location, Darrow } from "../../../Shared/Icons";
 import { SelectBox } from "../../../Shared/SelectBox";
 import {
   AppMainTopCover,
-  AppMainItemSection,
   AppLocationDropDown,
+  AppLoginTime,
+  AppDropDownItem,
   AppMainLeftArea,
   AppMainRightArea,
 } from "./style";
 
-export const TopBar = ({ pageName, items, location }) => {
+export const TopBar = ({ location }) => {
   return (
     <AppMainTopCover>
       <AppMainLeftArea>
-        <AppMainItemSection>
-          <PageHeading heading={pageName} />
-          <Breadcrumb items={items} separator={<Rarrow />} />
-        </AppMainItemSection>
         <AppLocationDropDown>
-          <SelectBox
-            placeholder="Durgapur"
-            options={location}
-            name={"location_dropdown"}
-            id={"location_dropdown"}
-          />
+          <Location />
+          <AppDropDownItem>
+            <SelectBox
+              placeholder="Durgapur"
+              options={location}
+              name={"location_dropdown"}
+              id={"location_dropdown"}
+            />
+            <Darrow />
+          </AppDropDownItem>
         </AppLocationDropDown>
+        <AppLoginTime>
+          <span>Last Login: 23-04-2025, 12:30 PM</span>
+        </AppLoginTime>
       </AppMainLeftArea>
       <AppMainRightArea>
         <ul>

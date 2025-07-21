@@ -10,5 +10,5 @@ export const AppTableDataInformation = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px 24px 0;
+  padding: 16px 24px 0;
 `;

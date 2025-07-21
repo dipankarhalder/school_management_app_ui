@@ -1,5 +1,113 @@
 import styled from "styled-components";
 
+export const NoData = styled.div`
+  padding: 20px;
+  color: ${({ theme }) => theme.colors.gray};
+  text-align: center;
+`;
+
+export const TableSearchBtn = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const TablePageHeading = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  & > h1 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+`;
+
+export const TableSearch = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  & > button {
+    display: flex;
+    gap: 10px;
+    height: 34px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    align-items: center;
+    color: #ffffff;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+    &.app_export {
+      color: ${({ theme }) => theme.colors.black};
+    }
+
+    &.app_delete {
+      color: ${({ theme }) => theme.colors.error};
+    }
+
+    & > p {
+      height: 14px;
+      font-weight: 600;
+      font-size: 11px;
+      text-align: center;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    & > span {
+      width: 14px;
+      height: 14px;
+
+      & > svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+`;
+
+export const TableSearchInside = styled.div`
+  width: auto;
+  padding: 0px 14px;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+  border-radius: 6px;
+  position: relative;
+
+  & > input {
+    box-sizing: border-box;
+    width: 300px;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    background: transparent;
+    border: 0px solid transparent;
+
+    &:focus-visible {
+      outline: -webkit-focus-ring-color auto 0px;
+    }
+  }
+
+  & > span {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 12px;
+    top: 8px;
+
+    & > svg {
+      width: 16px;
+      height: 16px;
+      opacity: 0.4;
+    }
+  }
+`;
+
 export const TableContainer = styled.div`
   width: 100%;
   border-radius: 6px;
@@ -63,37 +171,42 @@ export const TableContainer = styled.div`
           font-size: 14px;
           padding: 0.5rem 1rem;
 
-          & > span.app_status_actv {
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: ${({ theme }) => theme.colors.green};
-            background-color: ${({ theme }) => theme.colors.successbg};
-          }
-
+          & > span.app_status_actv,
           & > span.app_status_inactv {
             padding: 4px 10px;
             border-radius: 4px;
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
+          }
+
+          & > span.app_status_actv {
+            color: ${({ theme }) => theme.colors.green};
+            background-color: ${({ theme }) => theme.colors.successbg};
+            border: 1px solid ${({ theme }) => theme.colors.green};
+          }
+
+          & > span.app_status_inactv {
             color: ${({ theme }) => theme.colors.warning};
             background-color: ${({ theme }) => theme.colors.warningbg};
+            border: 1px solid ${({ theme }) => theme.colors.warning};
           }
 
           & > .app_share {
-            gap: 8px;
+            gap: 10px;
             display: flex;
             cursor: pointer;
             justify-content: center;
             align-items: center;
-            font-weight: 600;
-            text-decoration: underline;
             color: ${({ theme }) => theme.colors.hblue};
             background: ${({ theme }) => theme.colors.transparent};
             border: 0px solid ${({ theme }) => theme.colors.transparent};
+
+            & > p {
+              font-size: 14px;
+              font-weight: 600;
+              text-decoration: underline;
+            }
 
             & > span {
               width: 12px;
@@ -103,6 +216,21 @@ export const TableContainer = styled.div`
                 width: 12px;
                 height: 12px;
               }
+            }
+
+            .app_fallback {
+              width: 28px;
+              height: 28px;
+              border-radius: 50%;
+              font-size: 12px;
+              font-weight: 700;
+              text-align: center;
+              line-height: 26px;
+              background: #f6f8fa;
+              text-decoration: none;
+              border: 1px solid #d0d7de;
+              color: ${({ theme }) => theme.colors.black};
+              box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
             }
           }
         }
@@ -115,12 +243,6 @@ export const TableContainer = styled.div`
   }
 `;
 
-export const NoData = styled.div`
-  padding: 20px;
-  color: ${({ theme }) => theme.colors.gray};
-  text-align: center;
-`;
-
 export const SortIcon = styled.span`
   font-size: 12px;
   margin-left: 8px;
@@ -130,31 +252,37 @@ export const ActionTableButton = styled.td`
   width: auto;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 6px;
 
   & > button {
     width: 30px;
     height: 30px;
     cursor: pointer;
     border-radius: 6px;
-    border: 1px solid ${({ theme }) => theme.colors.tableborder};
+    box-sizing: border-box;
+    background: #f6f8fa;
+    border: 1px solid rgba(27, 31, 36, 0.15);
+    box-shadow: 0px 1px 0px rgba(27, 31, 36, 0.04),
+      inset 0px 1px 0px rgba(255, 255, 255, 0.25);
 
     &.edit {
       color: ${({ theme }) => theme.colors.hblue};
-      background-color: ${({ theme }) => theme.colors.infobg};
-      border-color: ${({ theme }) => theme.colors.infobg};
+      border-color: ${({ theme }) => theme.colors.tableborder};
     }
 
     &.delete {
       color: ${({ theme }) => theme.colors.error};
-      background-color: ${({ theme }) => theme.colors.errorbg};
-      border-color: ${({ theme }) => theme.colors.errorbg};
+      border-color: ${({ theme }) => theme.colors.tableborder};
     }
 
     &.status {
       color: ${({ theme }) => theme.colors.success};
-      background-color: ${({ theme }) => theme.colors.successbg};
-      border-color: ${({ theme }) => theme.colors.successbg};
+      border-color: ${({ theme }) => theme.colors.tableborder};
+    }
+
+    &.update_status {
+      color: ${({ theme }) => theme.colors.gray};
+      border-color: ${({ theme }) => theme.colors.tableborder};
     }
 
     & > span {
