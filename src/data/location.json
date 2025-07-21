@@ -1,0 +1,82 @@
+[
+  {
+    "id": "LOC1",
+    "location_name": "Greenfield College",
+    "location_code": "GC001",
+    "location_address": "123 Elm Street, Springfield, IL",
+    "location_principal": "Dr. Susan Fields",
+    "contact_no": "+1-217-555-0123",
+    "status": true,
+    "create_date": "2022-08-15"
+  },
+  {
+    "id": "LOC2",
+    "location_name": "Greenfield Ridge Institute",
+    "location_code": "GR002",
+    "location_address": "456 Oak Avenue, Asheville, NC",
+    "location_principal": "Dr. Michael Ray",
+    "contact_no": "+1-828-555-0456",
+    "status": true,
+    "create_date": "2023-01-10"
+  },
+  {
+    "id": "LOC3",
+    "location_name": "Greenfield Technical College",
+    "location_code": "GT003",
+    "location_address": "789 Pine Blvd, Orlando, FL",
+    "location_principal": "Prof. Linda Carter",
+    "contact_no": "+1-407-555-0789",
+    "status": true,
+    "create_date": "2021-06-25"
+  },
+  {
+    "id": "LOC4",
+    "location_name": "Greenfield Northern University",
+    "location_code": "GNU004",
+    "location_address": "101 Maple Road, Duluth, MN",
+    "location_principal": "Dr. John Keller",
+    "contact_no": "+1-218-555-0110",
+    "status": false,
+    "create_date": "2019-11-03"
+  },
+  {
+    "id": "LOC5",
+    "location_name": "Greenfield Community College",
+    "location_code": "GCC005",
+    "location_address": "222 Cedar St, Boise, ID",
+    "location_principal": "Ms. Rachel Greene",
+    "contact_no": "+1-208-555-0234",
+    "status": true,
+    "create_date": "2020-02-14"
+  },
+  {
+    "id": "LOC6",
+    "location_name": "Greenfield Southgate Polytechnic",
+    "location_code": "GSP006",
+    "location_address": "333 Birch Ln, Austin, TX",
+    "location_principal": "Dr. Samuel Lee",
+    "contact_no": "+1-512-555-0345",
+    "status": true,
+    "create_date": "2022-04-18"
+  },
+  {
+    "id": "LOC7",
+    "location_name": "Greenfield Mountain Valley College",
+    "location_code": "GMVC007",
+    "location_address": "444 Aspen Drive, Denver, CO",
+    "location_principal": "Prof. Emily Novak",
+    "contact_no": "+1-303-555-0567",
+    "status": false,
+    "create_date": "2021-09-07"
+  },
+  {
+    "id": "LOC8",
+    "location_name": "Greenfield Arts Academy",
+    "location_code": "GAA008",
+    "location_address": "555 Willow Way, Madison, WI",
+    "location_principal": "Dr. Henry Adams",
+    "contact_no": "+1-608-555-0678",
+    "status": true,
+    "create_date": "2023-07-01"
+  }
+]
