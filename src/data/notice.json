@@ -1,0 +1,311 @@
+[
+  {
+    "id": "N01",
+    "title": "Guest Lecture on AI",
+    "description": "A guest lecture on AI and Machine Learning will be held on July 25th at 10:00 AM in the seminar hall.",
+    "department": "Computer Science",
+    "author": {
+      "name": "Dr. Priya Sharma",
+      "role": "Professor",
+      "contact_email": "priya.sharma@college.edu"
+    },
+    "date_posted": "2025-07-20",
+    "valid_until": "2025-07-25",
+    "priority": "high",
+    "attachments": [
+      {
+        "filename": "AI_Lecture_Flyer.pdf",
+        "url": "/blank.pdf"
+      }
+    ],
+    "audience": ["Students", "Staff"],
+    "tags": ["AI", "seminar", "Computer Science"]
+  },
+  {
+    "id": "N02",
+    "title": "Library Hours Update",
+    "description": "Library will remain open until 10 PM during exam week from July 22 to July 29.",
+    "department": "Library",
+    "author": {
+      "name": "Mrs. Kavita Rao",
+      "role": "Librarian",
+      "contact_email": "kavita.rao@college.edu"
+    },
+    "date_posted": "2025-07-18",
+    "valid_until": "2025-07-29",
+    "priority": "medium",
+    "attachments": [],
+    "audience": ["Students"],
+    "tags": ["library", "exam", "hours"]
+  },
+  {
+    "id": "N03",
+    "title": "Blood Donation Camp",
+    "description": "Red Cross Society is organizing a blood donation camp on July 28 in the college auditorium.",
+    "department": "Medical Unit",
+    "author": {
+      "name": "Dr. Rajiv Menon",
+      "role": "Medical Officer",
+      "contact_email": "rajiv.menon@college.edu"
+    },
+    "date_posted": "2025-07-19",
+    "valid_until": "2025-07-28",
+    "priority": "high",
+    "attachments": [],
+    "audience": ["Students", "Faculty"],
+    "tags": ["health", "blood donation", "event"]
+  },
+  {
+    "id": "N04",
+    "title": "Mechanical Engineering Workshop",
+    "description": "A hands-on workshop on 3D printing will be held for 3rd-year students in Lab 3.",
+    "department": "Mechanical Engineering",
+    "author": {
+      "name": "Prof. Anil Kumar",
+      "role": "Workshop Coordinator",
+      "contact_email": "anil.kumar@college.edu"
+    },
+    "date_posted": "2025-07-15",
+    "valid_until": "2025-07-24",
+    "priority": "medium",
+    "attachments": [
+      {
+        "filename": "3D_Printing_Schedule.pdf",
+        "url": "/blank.pdf"
+      }
+    ],
+    "audience": ["Students"],
+    "tags": ["mechanical", "workshop", "3D printing"]
+  },
+  {
+    "id": "N05",
+    "title": "Placement Drive by Infosys",
+    "description": "Infosys is conducting a placement drive for final-year students on August 2.",
+    "department": "Training and Placement Cell",
+    "author": {
+      "name": "Mr. Ajay Sinha",
+      "role": "Placement Officer",
+      "contact_email": "ajay.sinha@college.edu"
+    },
+    "date_posted": "2025-07-21",
+    "valid_until": "2025-08-02",
+    "priority": "high",
+    "attachments": [
+      {
+        "filename": "Infosys_Drive_Guidelines.pdf",
+        "url": "/blank.pdf"
+      }
+    ],
+    "audience": ["Students"],
+    "tags": ["placement", "Infosys", "career"]
+  },
+  {
+    "id": "N06",
+    "title": "Holiday on Independence Day",
+    "description": "College will remain closed on August 15 in observance of Independence Day.",
+    "department": "Administration",
+    "author": {
+      "name": "Mr. Ramesh Verma",
+      "role": "Registrar",
+      "contact_email": "ramesh.verma@college.edu"
+    },
+    "date_posted": "2025-07-21",
+    "valid_until": "2025-08-15",
+    "priority": "low",
+    "attachments": [],
+    "audience": ["Students", "Faculty", "Staff"],
+    "tags": ["holiday", "independence day"]
+  },
+  {
+    "id": "N07",
+    "title": "Internal Exam Timetable Released",
+    "description": "The internal assessment timetable for B.Tech 2nd year has been released.",
+    "department": "Examination Cell",
+    "author": {
+      "name": "Mrs. Neha Das",
+      "role": "Exam Coordinator",
+      "contact_email": "neha.das@college.edu"
+    },
+    "date_posted": "2025-07-20",
+    "valid_until": "2025-08-05",
+    "priority": "high",
+    "attachments": [
+      {
+        "filename": "Internal_Timetable.pdf",
+        "url": "/blank.pdf"
+      }
+    ],
+    "audience": ["Students"],
+    "tags": ["exam", "schedule", "assessment"]
+  },
+  {
+    "id": "N08",
+    "title": "Photography Club Meeting",
+    "description": "Photography club meeting will be held on July 26 in Room 202.",
+    "department": "Student Activities",
+    "author": {
+      "name": "Mr. Rohan Gupta",
+      "role": "Club Coordinator",
+      "contact_email": "rohan.gupta@college.edu"
+    },
+    "date_posted": "2025-07-19",
+    "valid_until": "2025-07-26",
+    "priority": "low",
+    "attachments": [],
+    "audience": ["Students"],
+    "tags": ["club", "photography", "event"]
+  },
+  {
+    "id": "N09",
+    "title": "Chemistry Lab Safety Training",
+    "description": "All 1st-year students must attend the mandatory lab safety session on July 30.",
+    "department": "Chemistry",
+    "author": {
+      "name": "Dr. Sneha Mukherjee",
+      "role": "Lab Supervisor",
+      "contact_email": "sneha.m@college.edu"
+    },
+    "date_posted": "2025-07-20",
+    "valid_until": "2025-07-30",
+    "priority": "high",
+    "attachments": [],
+    "audience": ["Students"],
+    "tags": ["chemistry", "lab", "safety"]
+  },
+  {
+    "id": "N10",
+    "title": "NSS Tree Plantation Drive",
+    "description": "Join the NSS unit on July 27 for a campus tree plantation event.",
+    "department": "NSS",
+    "author": {
+      "name": "Ms. Anjali Mehta",
+      "role": "Program Officer",
+      "contact_email": "anjali.mehta@college.edu"
+    },
+    "date_posted": "2025-07-18",
+    "valid_until": "2025-07-27",
+    "priority": "medium",
+    "attachments": [],
+    "audience": ["Students", "Faculty"],
+    "tags": ["environment", "NSS", "event"]
+  },
+  {
+    "id": "N11",
+    "title": "Annual Sports Meet Registration",
+    "description": "Registration for the Annual Sports Meet is open till August 5.",
+    "department": "Physical Education",
+    "author": {
+      "name": "Mr. Amit Rathore",
+      "role": "Sports Coordinator",
+      "contact_email": "amit.rathore@college.edu"
+    },
+    "date_posted": "2025-07-21",
+    "valid_until": "2025-08-05",
+    "priority": "medium",
+    "attachments": [],
+    "audience": ["Students"],
+    "tags": ["sports", "registration", "event"]
+  },
+  {
+    "id": "N12",
+    "title": "Electrical Maintenance Notification",
+    "description": "Power will be shut down in Blocks B & C for maintenance on July 24, from 2 PM to 5 PM.",
+    "department": "Maintenance",
+    "author": {
+      "name": "Mr. Suraj Thakur",
+      "role": "Maintenance Supervisor",
+      "contact_email": "suraj.thakur@college.edu"
+    },
+    "date_posted": "2025-07-20",
+    "valid_until": "2025-07-24",
+    "priority": "medium",
+    "attachments": [],
+    "audience": ["Students", "Faculty"],
+    "tags": ["maintenance", "electricity", "notice"]
+  },
+  {
+    "id": "N13",
+    "title": "Hackathon 2025 Registration Open",
+    "description": "Students can now register for the annual Hackathon 2025 to be held in August.",
+    "department": "Innovation Cell",
+    "author": {
+      "name": "Ms. Devika Iyer",
+      "role": "Innovation Lead",
+      "contact_email": "devika.iyer@college.edu"
+    },
+    "date_posted": "2025-07-17",
+    "valid_until": "2025-08-10",
+    "priority": "high",
+    "attachments": [],
+    "audience": ["Students"],
+    "tags": ["hackathon", "innovation", "tech"]
+  },
+  {
+    "id": "N14",
+    "title": "Faculty Development Program",
+    "description": "A 3-day FDP on Outcome Based Education is scheduled from Aug 1 to Aug 3.",
+    "department": "Quality Cell",
+    "author": {
+      "name": "Dr. Kiran Joshi",
+      "role": "Coordinator",
+      "contact_email": "kiran.joshi@college.edu"
+    },
+    "date_posted": "2025-07-21",
+    "valid_until": "2025-08-03",
+    "priority": "medium",
+    "attachments": [],
+    "audience": ["Faculty"],
+    "tags": ["FDP", "education", "faculty"]
+  },
+  {
+    "id": "N15",
+    "title": "WiFi Downtime Notice",
+    "description": "Internet services will be interrupted due to maintenance on July 23, 1 PM–3 PM.",
+    "department": "IT Services",
+    "author": {
+      "name": "Mr. Mohan Bhatt",
+      "role": "IT Admin",
+      "contact_email": "mohan.bhatt@college.edu"
+    },
+    "date_posted": "2025-07-20",
+    "valid_until": "2025-07-23",
+    "priority": "medium",
+    "attachments": [],
+    "audience": ["Students", "Faculty"],
+    "tags": ["internet", "wifi", "IT"]
+  },
+  {
+    "id": "N16",
+    "title": "Drama Club Auditions",
+    "description": "Auditions for the annual play will be held on July 29 in the amphitheater.",
+    "department": "Student Activities",
+    "author": {
+      "name": "Ms. Tara Naik",
+      "role": "Drama Coordinator",
+      "contact_email": "tara.naik@college.edu"
+    },
+    "date_posted": "2025-07-21",
+    "valid_until": "2025-07-29",
+    "priority": "low",
+    "attachments": [],
+    "audience": ["Students"],
+    "tags": ["drama", "auditions", "club"]
+  },
+  {
+    "id": "N17",
+    "title": "Fee Payment Deadline Extended",
+    "description": "The deadline for paying tuition fees has been extended to August 10.",
+    "department": "Accounts",
+    "author": {
+      "name": "Ms. Rekha Jain",
+      "role": "Accounts Officer",
+      "contact_email": "rekha.jain@college.edu"
+    },
+    "date_posted": "2025-07-20",
+    "valid_until": "2025-08-10",
+    "priority": "high",
+    "attachments": [],
+    "audience": ["Students"],
+    "tags": ["fees", "deadline", "accounts"]
+  }
+]
