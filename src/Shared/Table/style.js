@@ -71,39 +71,40 @@ export const TableSearch = styled.div`
 `;
 
 export const TableSearchInside = styled.div`
+  display: flex;
   width: auto;
-  padding: 0px 14px;
-  background: #f6f8fa;
-  border: 1px solid #d0d7de;
-  box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
-  border-radius: 6px;
+  color: #ffffff;
   position: relative;
 
-  & > input {
+  & > button {
+    display: flex;
     box-sizing: border-box;
-    width: 300px;
+    width: auto;
     height: 32px;
     font-size: 13px;
-    font-weight: 500;
-    background: transparent;
-    border: 0px solid transparent;
+    font-weight: 600;
+    padding: 0px 12px;
+    background: #2da44e;
+    border: 1px solid #208e3fff;
+    box-shadow: 0px 1px 0px rgba(27, 31, 36, 0.1),
+      inset 0px 1px 0px rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    color: #ffffff;
+    align-items: center;
+    gap: 8px;
 
     &:focus-visible {
       outline: -webkit-focus-ring-color auto 0px;
     }
-  }
 
-  & > span {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    right: 12px;
-    top: 8px;
-
-    & > svg {
+    & > span {
       width: 16px;
       height: 16px;
-      opacity: 0.4;
+
+      & > svg {
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 `;
@@ -241,11 +242,14 @@ export const TableContainer = styled.div`
 
           & > span.app_status_actv,
           & > span.app_status_inactv {
+            position: relative;
             padding: 4px 10px;
             border-radius: 4px;
             font-size: 10px;
             font-weight: 700;
+            justify-content: center;
             text-transform: uppercase;
+            top: -2px;
           }
 
           & > span.app_status_actv {
@@ -524,4 +528,142 @@ export const PageButton = styled.button.withConfig({
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   border: 1px solid #d0d7de;
   box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+`;
+
+export const AppFilterCoverSection = styled.div`
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  justify-content: space-between;
+  border-top: 1px solid ${({ theme }) => theme.colors.tableborder};
+`;
+
+export const AppFilterLeft = styled.div`
+  width: auto;
+  display: flex;
+`;
+
+export const AppSearchInside = styled.div`
+  width: auto;
+  padding: 0px 14px;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+  border-radius: 6px;
+  position: relative;
+
+  & > input {
+    box-sizing: border-box;
+    width: 300px;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    background: transparent;
+    border: 0px solid transparent;
+
+    &:focus-visible {
+      outline: -webkit-focus-ring-color auto 0px;
+    }
+  }
+
+  & > span {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 12px;
+    top: 8px;
+
+    & > svg {
+      width: 16px;
+      height: 16px;
+      opacity: 0.4;
+    }
+  }
+`;
+
+export const AppFilterRight = styled.div`
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .filter_group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    & > label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .app_select_cover {
+      position: relative;
+      display: flex;
+      border-radius: 6px;
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+      & > select {
+        height: 26px;
+        font-size: 12px;
+        font-weight: 600;
+        width: auto;
+        padding: 0 30px 0 10px;
+        background: transparent;
+        border: 0px solid transparent;
+        appearance: none;
+        -webkit-appearance: none;
+
+        &:focus-visible {
+          outline: -webkit-focus-ring-color auto 0px;
+        }
+      }
+
+      & > span {
+        top: 0;
+        right: 0;
+        width: 26px;
+        height: 26px;
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+
+        & > svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+
+  .app_filter_clear {
+    display: flex;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+    & > span {
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & > svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
 `;

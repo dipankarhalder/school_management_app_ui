@@ -9,6 +9,8 @@ import {
   Download,
   Delete,
   ColumnOption,
+  Cross,
+  CheckPlus,
 } from "../Icons";
 import {
   TableSearchBtn,
@@ -23,6 +25,10 @@ import {
   AppPaginationLeftSide,
   AppPaginationRightSide,
   PageButton,
+  AppFilterCoverSection,
+  AppFilterLeft,
+  AppFilterRight,
+  AppSearchInside,
 } from "./style";
 import { Breadcrumb } from "../Breadcrumb";
 import { TableRowItem } from "./TableRowItem";
@@ -79,10 +85,13 @@ export const TableInfo = ({
   pagePath,
   data,
   viewBtn,
+  addTextItem,
   visibleColumns,
+  handleAddItems,
   onToggleColumn,
   enableStatus = false,
   sortableColumns = [],
+  filterableColumns,
   onAction = () => {},
 }) => {
   const [sortKey, setSortKey] = useState(null);
@@ -93,6 +102,7 @@ export const TableInfo = ({
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [selectedRows, setSelectedRows] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [columnFilters, setColumnFilters] = useState({});
   const dataInformations = useMemo(
     () => (data.length > 0 ? Object.keys(data[0]) : []),
     [data]
@@ -104,12 +114,21 @@ export const TableInfo = ({
   };
 
   const filteredData = useMemo(() => {
-    return data.filter((item) =>
-      dataInformations.some((key) =>
+    return data.filter((item) => {
+      const searchMatch = dataInformations.some((key) =>
         String(item[key]).toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
-  }, [data, dataInformations, searchTerm]);
+      );
+
+      const filtersMatch = Object.entries(columnFilters).every(
+        ([key, value]) => {
+          if (value === undefined) return true;
+          return String(item[key]) === String(value);
+        }
+      );
+
+      return searchMatch && filtersMatch;
+    });
+  }, [data, dataInformations, searchTerm, columnFilters]);
 
   const sortedData = useMemo(() => {
     return sortKey ? sortData(filteredData, sortKey, sortOrder) : filteredData;
@@ -217,14 +236,9 @@ export const TableInfo = ({
         </TablePageHeading>
         <TableSearch>
           <TableSearchInside>
-            <input
-              id="search_item"
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-            <Search />
+            <button onClick={() => handleAddItems("add")}>
+              <CheckPlus /> {addTextItem}
+            </button>
           </TableSearchInside>
           <TableColumnEnableOption>
             <button>
@@ -262,6 +276,65 @@ export const TableInfo = ({
           )}
         </TableSearch>
       </TableSearchBtn>
+
+      <AppFilterCoverSection>
+        <AppFilterLeft>
+          <AppSearchInside>
+            <input
+              id="search_item"
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+            <Search />
+          </AppSearchInside>
+        </AppFilterLeft>
+        <AppFilterRight>
+          {filterableColumns.map((key) => {
+            const uniqueValues = Array.from(
+              new Set(data.map((item) => item[key]))
+            );
+            return (
+              <div key={key} className="filter_group">
+                <label htmlFor={key}>{key}:</label>
+                <div className="app_select_cover">
+                  <select
+                    id={key}
+                    value={columnFilters[key] || ""}
+                    onChange={(e) =>
+                      setColumnFilters((prev) => ({
+                        ...prev,
+                        [key]: e.target.value || undefined,
+                      }))
+                    }
+                  >
+                    <option value="">All</option>
+                    {uniqueValues.map((value) => (
+                      <option key={value} value={value}>
+                        {typeof value === "boolean"
+                          ? value
+                            ? "Active"
+                            : "Inactive"
+                          : value}
+                      </option>
+                    ))}
+                  </select>
+                  <Darrow />
+                </div>
+              </div>
+            );
+          })}
+          {Object.keys(columnFilters).length ? (
+            <button
+              className="app_filter_clear"
+              onClick={() => setColumnFilters({})}
+            >
+              <Cross />
+            </button>
+          ) : null}
+        </AppFilterRight>
+      </AppFilterCoverSection>
 
       <TableContainer>
         <table>
@@ -308,7 +381,6 @@ export const TableInfo = ({
           </tbody>
         </table>
       </TableContainer>
-
       <AppPaginationCover>
         <AppPaginationLeftSide>
           <span>
@@ -339,7 +411,6 @@ export const TableInfo = ({
               <Darrow />
             </div>
           </div>
-
           <div className="app_pagination_container">
             <div className="app_pager_showing_items">
               <p>

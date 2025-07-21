@@ -15,6 +15,10 @@ export const StudentsPage = () => {
     console.log(`Action: ${action}`, student);
   };
 
+  const handleAddItems = (isopen) => {
+    console.log(isopen);
+  };
+
   const studentTableData =
     studentData &&
     studentData.map((item) => ({
@@ -67,6 +71,8 @@ export const StudentsPage = () => {
           pageTitle={"Manage Students"}
           pagePath={pagePaths}
           data={studentTableData}
+          addTextItem={"Add New Student"}
+          handleAddItems={handleAddItems}
           sortableColumns={[
             "id",
             "name",
@@ -77,6 +83,7 @@ export const StudentsPage = () => {
           ]}
           viewBtn={"name"}
           enableStatus={true}
+          filterableColumns={["gender", "department", "status", "sec"]}
           visibleColumns={visibleColumns}
           onToggleColumn={(col) =>
             setVisibleColumns((prev) => ({
