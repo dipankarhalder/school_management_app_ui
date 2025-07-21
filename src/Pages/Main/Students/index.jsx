@@ -10,9 +10,11 @@ const pagePaths = [
 ];
 
 export const StudentsPage = () => {
-  const handleStudentAction = (action, student) => {
+  const handleBtnAction = (action, student) => {
     console.log(`Action: ${action}`, student);
   };
+
+  // const handle
 
   const studentTableData =
     studentData &&
@@ -31,9 +33,11 @@ export const StudentsPage = () => {
 
   return (
     <AppMainLayoutCover>
-      <TopBar pageName="Students" items={pagePaths} location={locationInfo} />
+      <TopBar location={locationInfo} />
       <AppTableDataInformation>
         <TableInfo
+          pageTitle={"Manage Students"}
+          pagePath={pagePaths}
           data={studentTableData}
           sortableColumns={[
             "id",
@@ -45,7 +49,7 @@ export const StudentsPage = () => {
           ]}
           viewBtn={"name"}
           enableStatus={true}
-          onAction={handleStudentAction}
+          onAction={handleBtnAction}
         />
       </AppTableDataInformation>
     </AppMainLayoutCover>
