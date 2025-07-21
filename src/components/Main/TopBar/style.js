@@ -54,7 +54,7 @@ export const AppDropDownItem = styled.div`
   & > select {
     height: 32px;
     font-size: 13px;
-    fonty-weight: 600;
+    font-weight: 600;
     width: auto;
     height: 32px;
     padding: 0 40px 0 4px;

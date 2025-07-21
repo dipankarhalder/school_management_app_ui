@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { TopBar } from "../../../components/Main/TopBar";
 import { locationInfo } from "../../../Constant";
 import { TableInfo } from "../../../Shared/Table";
@@ -14,22 +15,44 @@ export const StudentsPage = () => {
     console.log(`Action: ${action}`, student);
   };
 
-  // const handle
-
   const studentTableData =
     studentData &&
     studentData.map((item) => ({
       id: item.id,
       name: item.name,
-      section: item.section,
+      sec: item.section,
       status: item.mobile % 2 === 0 ? true : false,
       dob: item.dob,
-      gender: item.gender,
       phone: item.mobile,
       email: item.email,
       department: item.department,
       parent_name: item.parent_name,
+      address: item.address,
     }));
+
+  const tableHeaders =
+    studentTableData.length > 0 ? Object.keys(studentTableData[0]) : [];
+
+  const [visibleColumns, setVisibleColumns] = useState(() =>
+    tableHeaders.reduce((acc, col) => {
+      acc[col] = true;
+      return acc;
+    }, {})
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleColumns((prev) => ({
+        ...prev,
+        parent_name: false,
+        address: false,
+      }));
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <AppMainLayoutCover>
@@ -49,9 +72,49 @@ export const StudentsPage = () => {
           ]}
           viewBtn={"name"}
           enableStatus={true}
+          visibleColumns={visibleColumns}
+          onToggleColumn={(col) =>
+            setVisibleColumns((prev) => ({
+              ...prev,
+              [col]: !prev[col],
+            }))
+          }
           onAction={handleBtnAction}
         />
       </AppTableDataInformation>
     </AppMainLayoutCover>
   );
 };
+
+// useEffect(() => {
+//     const handleResize = () => {
+//       setVisibleColumns((prev) => ({
+//         ...prev,
+//         parent_name: false,
+//         address: false,
+//       }));
+//       // const width = window.innerWidth;
+//       // if (width < breakpoints.md) {
+//       //   setVisibleColumns((prev) => ({
+//       //     ...prev,
+//       //     sec: false,
+//       //     email: false,
+//       //     status: false,
+//       //     parent_name: false,
+//       //   }));
+//       // } else if (width < breakpoints.lg) {
+//       //   setVisibleColumns((prev) => ({
+//       //     ...prev,
+//       //     parent_name: false,
+//       //   }));
+//       // } else {
+//       //   setVisibleColumns((prev) => ({
+//       //     ...prev,
+//       //   }));
+//       // }
+//     };
+
+//     handleResize();
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
