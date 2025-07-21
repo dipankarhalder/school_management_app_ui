@@ -38,6 +38,29 @@ export const TableRowItem = React.memo(
               </td>
             );
           }
+
+          if (key === "priority") {
+            return (
+              <td key={key}>
+                <span
+                  className={
+                    item[key] === "high"
+                      ? "app_high"
+                      : item[key] === "medium"
+                      ? "app_medium"
+                      : "app_low"
+                  }
+                >
+                  {item[key] === "high"
+                    ? "High"
+                    : item[key] === "medium"
+                    ? "Medium"
+                    : "Low"}
+                </span>
+              </td>
+            );
+          }
+
           if (key === viewBtn) {
             return (
               <td key={key}>

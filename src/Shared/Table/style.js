@@ -264,6 +264,37 @@ export const TableContainer = styled.div`
             border: 1px solid ${({ theme }) => theme.colors.warning};
           }
 
+          & > span.app_high,
+          & > span.app_medium,
+          & > span.app_low {
+            position: relative;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            justify-content: center;
+            text-transform: uppercase;
+            top: -2px;
+          }
+
+          & > span.app_high {
+            color: ${({ theme }) => theme.colors.green};
+            background-color: ${({ theme }) => theme.colors.successbg};
+            border: 1px solid ${({ theme }) => theme.colors.green};
+          }
+
+          & > span.app_medium {
+            color: ${({ theme }) => theme.colors.info};
+            background-color: ${({ theme }) => theme.colors.infobg};
+            border: 1px solid ${({ theme }) => theme.colors.info};
+          }
+
+          & > span.app_low {
+            color: ${({ theme }) => theme.colors.warning};
+            background-color: ${({ theme }) => theme.colors.warningbg};
+            border: 1px solid ${({ theme }) => theme.colors.warning};
+          }
+
           & > .app_share {
             gap: 10px;
             display: flex;
