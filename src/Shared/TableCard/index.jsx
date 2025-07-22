@@ -85,9 +85,7 @@ export const TableCardInfo = ({
   pagePath,
   data,
   addTextItem,
-  visibleColumns,
   handleAddItems,
-  onToggleColumn,
   enableStatus = false,
   filterableColumns,
   onAction = () => {},
@@ -213,25 +211,6 @@ export const TableCardInfo = ({
               <CheckPlus /> {addTextItem}
             </button>
           </TableSearchInside>
-          <TableColumnEnableOption>
-            <button>
-              <ColumnOption />
-            </button>
-            <div className="dropdown_content">
-              <div className="dropdown_inside">
-                {dataInformations.map((col) => (
-                  <label key={col}>
-                    <input
-                      type="checkbox"
-                      checked={visibleColumns[col]}
-                      onChange={() => onToggleColumn(col)}
-                    />
-                    {col.replace(/_/g, " ")}
-                  </label>
-                ))}
-              </div>
-            </div>
-          </TableColumnEnableOption>
           {selectedRows.length ? (
             <>
               <button className="app_export" onClick={handleExport}>

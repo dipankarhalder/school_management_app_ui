@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { TopBar } from "../../../components/Main/TopBar";
 import { locationInfo } from "../../../Constant";
 import { TableCardInfo } from "../../../Shared/TableCard";
@@ -9,7 +8,6 @@ import {
   CheckPlus,
   Edit,
   Delete,
-  Circle,
   CrossTick,
 } from "../../../Shared/Icons";
 
@@ -39,32 +37,6 @@ export const CoursesPage = () => {
       HOD: item.instructor,
       semester: item.semester,
     }));
-
-  const tableHeaders =
-    courseTableData.length > 0
-      ? Object.keys(courseTableData[0]).filter((key) => key !== "image")
-      : [];
-
-  const [visibleColumns, setVisibleColumns] = useState(() =>
-    tableHeaders.reduce((acc, col) => {
-      acc[col] = true;
-      return acc;
-    }, {})
-  );
-
-  useEffect(() => {
-    const handleResize = () => {
-      setVisibleColumns((prev) => ({
-        ...prev,
-        duration: false,
-        audience: false,
-      }));
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const renderCourseItem = (
     item,
@@ -155,13 +127,6 @@ export const CoursesPage = () => {
           viewBtn={"name"}
           enableStatus={true}
           filterableColumns={["department", "semester", "status"]}
-          visibleColumns={visibleColumns}
-          onToggleColumn={(col) =>
-            setVisibleColumns((prev) => ({
-              ...prev,
-              [col]: !prev[col],
-            }))
-          }
           onAction={handleBtnAction}
           renderItem={renderCourseItem}
         />
