@@ -39,6 +39,16 @@ export const TableRowItem = React.memo(
             );
           }
 
+          if (key === "registration") {
+            return (
+              <td key={key}>
+                <span className={item[key] ? "app_reg_actv" : "app_reg_inactv"}>
+                  {item[key] ? "Required" : "Not Required"}
+                </span>
+              </td>
+            );
+          }
+
           if (key === "priority") {
             return (
               <td key={key}>

@@ -713,3 +713,241 @@ export const AppFilterRight = styled.div`
     }
   }
 `;
+
+export const TableViewCard = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background: #f6f8fa;
+  border-radius: 10px;
+  padding: 16px;
+
+  .app_card_view {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    label {
+      display: flex;
+      gap: 8px;
+
+      & > p {
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+
+    & > ul {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+
+      & > li {
+        width: 19.0192%;
+        overflow: hidden;
+        position: relative;
+        border-radius: 8px;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        box-shadow: 0px 2px 2px rgba(208, 215, 222, 0.2);
+
+        & > .app_checkbox_card {
+          position: absolute;
+          top: 52px;
+          right: 10px;
+
+          .custom_checkbox {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            border-radius: 50%;
+            background: #f6f8fa;
+            box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+            & > span {
+              width: 20px;
+              height: 20px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              &.active_check {
+                color: ${({ theme }) => theme.colors.blue};
+              }
+
+              &.not_active_check {
+                opacity: 0.3;
+                color: ${({ theme }) => theme.colors.gray};
+              }
+
+              & > svg {
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+
+          .custom_checkbox input {
+            display: none;
+          }
+        }
+
+        .app_inside_left {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          padding: 10px 12px;
+          border-bottom: 1px solid #eceff2;
+          justify-content: space-between;
+
+          & > span {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            & > img {
+              width: 40px;
+              height: 40px;
+              object-fit: cover;
+            }
+          }
+
+          .app_inside_main_head {
+            width: calc(100% - 50px);
+
+            h3 {
+              color: ${({ theme }) => theme.colors.hblue};
+              font-size: 14px;
+              font-weight: 600;
+              text-align: left;
+              text-decoration: underline;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              margin-bottom: 2px;
+            }
+
+            & > p {
+              float: left;
+              font-size: 11px;
+              font-weight: 600;
+              width: auto;
+              height: 18px;
+              line-height: 18px;
+              color: ${({ theme }) => theme.colors.gray};
+            }
+          }
+        }
+
+        .app_inside_card {
+          display: flex;
+          flex-direction: column;
+          padding: 8px 12px 6px;
+
+          & > p {
+            float: left;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 2px;
+
+            & > span {
+              float: left;
+              width: 50px;
+              font-weight: 500;
+              color: ${({ theme }) => theme.colors.gray};
+            }
+          }
+        }
+
+        .app_btn_items_card {
+          display: flex;
+          padding: 8px 12px;
+          gap: 6px;
+          align-items: center;
+          justify-content: space-between;
+
+          .app_status_card {
+            display: flex;
+
+            & > em {
+              position: relative;
+              padding: 5px 11px 4px;
+              border-radius: 4px;
+              font-size: 10px;
+              font-weight: 700;
+              justify-content: center;
+              text-transform: uppercase;
+              font-style: normal;
+
+              &.app_status_actv {
+                color: ${({ theme }) => theme.colors.green};
+                background-color: ${({ theme }) => theme.colors.successbg};
+                border: 1px solid ${({ theme }) => theme.colors.green};
+              }
+
+              &.app_status_inactv {
+                color: ${({ theme }) => theme.colors.warning};
+                background-color: ${({ theme }) => theme.colors.warningbg};
+                border: 1px solid ${({ theme }) => theme.colors.warning};
+              }
+            }
+          }
+
+          .app_btn_card {
+            display: flex;
+            gap: 6px;
+
+            & > button {
+              width: 26px;
+              height: 26px;
+              cursor: pointer;
+              border-radius: 5px;
+              box-sizing: border-box;
+              background: #f6f8fa;
+              border: 1px solid rgba(27, 31, 36, 0.15);
+              box-shadow: 0px 1px 0px rgba(27, 31, 36, 0.04),
+                inset 0px 1px 0px rgba(255, 255, 255, 0.25);
+
+              &.edit {
+                color: ${({ theme }) => theme.colors.hblue};
+                border-color: ${({ theme }) => theme.colors.tableborder};
+              }
+
+              &.delete {
+                color: ${({ theme }) => theme.colors.error};
+                border-color: ${({ theme }) => theme.colors.tableborder};
+              }
+
+              &.status {
+                color: ${({ theme }) => theme.colors.success};
+                border-color: ${({ theme }) => theme.colors.tableborder};
+              }
+
+              &.update_status {
+                color: ${({ theme }) => theme.colors.gray};
+                border-color: ${({ theme }) => theme.colors.tableborder};
+              }
+
+              & > span {
+                width: 24px;
+                height: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                & > svg {
+                  width: 14px;
+                  height: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
