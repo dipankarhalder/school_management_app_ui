@@ -1,9 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import * as XLSX from "xlsx";
 import {
-  Uarrow,
-  Darrow,
-  ActiveFilter,
   Rarrow,
   Search,
   Download,
@@ -11,15 +8,18 @@ import {
   ColumnOption,
   Cross,
   CheckPlus,
+  Edit,
+  CheckVerify,
+  Darrow,
+  Circle,
+  CrossTick,
 } from "../Icons";
 import {
   TableSearchBtn,
   TablePageHeading,
   TableSearch,
   TableSearchInside,
-  TableContainer,
   TableColumnEnableOption,
-  SortIcon,
   NoData,
   AppPaginationCover,
   AppPaginationLeftSide,
@@ -29,9 +29,9 @@ import {
   AppFilterLeft,
   AppFilterRight,
   AppSearchInside,
+  TableViewCard,
 } from "./style";
 import { Breadcrumb } from "../Breadcrumb";
-import { TableRowItem } from "./TableRowItem";
 
 const sortData = (data, key, order) => {
   return [...data].sort((a, b) => {
@@ -80,22 +80,21 @@ const generatePagination = (totalPages, currentPage) => {
   return range;
 };
 
-export const TableInfo = ({
+export const TableCardInfo = ({
   pageTitle,
   pagePath,
   data,
-  viewBtn,
   addTextItem,
   visibleColumns,
   handleAddItems,
   onToggleColumn,
   enableStatus = false,
-  sortableColumns = [],
   filterableColumns,
   onAction = () => {},
+  renderItem,
 }) => {
-  const [sortKey, setSortKey] = useState(null);
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortKey] = useState(null);
+  const [sortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
   const [inputPage, setInputPage] = useState("");
   const [debouncedInput, setDebouncedInput] = useState("");
@@ -165,16 +164,6 @@ export const TableInfo = ({
     }
   }, [paginatedData, isAllSelected]);
 
-  const handleSort = (key) => {
-    if (!sortableColumns.includes(key)) return;
-    if (key === sortKey) {
-      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    } else {
-      setSortKey(key);
-      setSortOrder("asc");
-    }
-  };
-
   const handlePageChange = (pageNum) => {
     if (typeof pageNum === "number" && pageNum >= 1 && pageNum <= totalPages) {
       setCurrentPage(pageNum);
@@ -206,22 +195,6 @@ export const TableInfo = ({
       setCurrentPage(pageNum);
     }
   }, [debouncedInput, totalPages]);
-
-  const getSortIcon = useCallback(
-    (key) => {
-      if (!sortableColumns.includes(key)) return null;
-      return key === sortKey ? (
-        sortOrder === "asc" ? (
-          <Uarrow />
-        ) : (
-          <Darrow />
-        )
-      ) : (
-        <ActiveFilter />
-      );
-    },
-    [sortKey, sortOrder, sortableColumns]
-  );
 
   if (!data || data.length === 0) {
     return <NoData>No data available at this time.</NoData>;
@@ -276,7 +249,6 @@ export const TableInfo = ({
           )}
         </TableSearch>
       </TableSearchBtn>
-
       <AppFilterCoverSection>
         <AppFilterLeft>
           <AppSearchInside>
@@ -336,51 +308,37 @@ export const TableInfo = ({
         </AppFilterRight>
       </AppFilterCoverSection>
 
-      <TableContainer>
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <input
-                  type="checkbox"
-                  onChange={toggleAll}
-                  checked={isAllSelected}
-                />
-              </th>
-              {dataInformations.map((key) =>
-                visibleColumns[key] ? (
-                  <th key={key} onClick={() => handleSort(key)}>
-                    <p>
-                      {key.replace(/_/g, " ").toUpperCase()}
-                      {sortableColumns.includes(key) && (
-                        <SortIcon>{getSortIcon(key)}</SortIcon>
-                      )}
-                    </p>
-                  </th>
-                ) : null
-              )}
-              <th>
-                <p>ACTIONS</p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {paginatedData.map((item) => (
-              <TableRowItem
-                key={item.id}
-                visibleColumns={visibleColumns}
-                item={item}
-                dataTableInfo={dataInformations}
-                viewBtn={viewBtn}
-                enableStatus={enableStatus}
-                selected={selectedRows.includes(item.id)}
-                onToggleRow={toggleRow}
-                onAction={onAction}
-              />
-            ))}
-          </tbody>
-        </table>
-      </TableContainer>
+      <TableViewCard>
+        <div className="app_card_view">
+          <label htmlFor="select_all">
+            <input
+              id="select_all"
+              type="checkbox"
+              onChange={toggleAll}
+              checked={isAllSelected}
+            />
+            <p>Select all the items</p>
+          </label>
+          <ul>
+            {paginatedData.map((item) =>
+              renderItem ? (
+                renderItem(
+                  item,
+                  selectedRows.includes(item.id),
+                  toggleRow,
+                  onAction,
+                  enableStatus
+                )
+              ) : (
+                <li key={item.id}>
+                  <p>{item.name}</p>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
+      </TableViewCard>
+
       <AppPaginationCover>
         <AppPaginationLeftSide>
           <span>

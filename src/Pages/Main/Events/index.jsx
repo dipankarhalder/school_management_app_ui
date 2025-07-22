@@ -24,7 +24,7 @@ export const EventsPage = () => {
     eventData.map((item) => ({
       id: item.id,
       name: item.name,
-      registration: item.registration_required ? "Required" : "Not Required",
+      registration: item.registration_required,
       department: item.department,
       organizer: item.organizer,
       location: item.location,

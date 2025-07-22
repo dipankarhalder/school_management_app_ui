@@ -1,0 +1,128 @@
+[
+  {
+    "courseId": "MGT101",
+    "courseName": "Principles of Management",
+    "credits": 3,
+    "instructor": "Dr. Anita Kapoor",
+    "semester": "Fall 2025",
+    "image": "/book-1.png",
+    "department": "Business Administration"
+  },
+  {
+    "courseId": "MGT102",
+    "courseName": "Organizational Behavior",
+    "credits": 4,
+    "instructor": "Prof. Ravi Mehra",
+    "semester": "Fall 2025",
+    "image": "/book-2.png",
+    "department": "Human Resources"
+  },
+  {
+    "courseId": "MGT103",
+    "courseName": "Marketing Management",
+    "credits": 3,
+    "instructor": "Dr. Sneha Rathi",
+    "semester": "Spring 2026",
+    "image": "/book-3.png",
+    "department": "Marketing"
+  },
+  {
+    "courseId": "MGT104",
+    "courseName": "Financial Accounting",
+    "credits": 4,
+    "instructor": "Dr. Sanjay Desai",
+    "semester": "Fall 2025",
+    "image": "/book-1.png",
+    "department": "Finance"
+  },
+  {
+    "courseId": "MGT105",
+    "courseName": "Operations Management",
+    "credits": 3,
+    "instructor": "Prof. Neha Singh",
+    "semester": "Spring 2026",
+    "image": "/book-2.png",
+    "department": "Operations"
+  },
+  {
+    "courseId": "MGT106",
+    "courseName": "Business Ethics",
+    "credits": 2,
+    "instructor": "Dr. Mehul Shah",
+    "semester": "Fall 2025",
+    "image": "/book-3.png",
+    "department": "Business Administration"
+  },
+  {
+    "courseId": "MGT107",
+    "courseName": "Strategic Management",
+    "credits": 3,
+    "instructor": "Prof. Vandana Rao",
+    "semester": "Spring 2026",
+    "image": "/book-1.png",
+    "department": "Strategy"
+  },
+  {
+    "courseId": "MGT108",
+    "courseName": "Corporate Finance",
+    "credits": 4,
+    "instructor": "Dr. Rajeev Joshi",
+    "semester": "Fall 2025",
+    "image": "/book-2.png",
+    "department": "Finance"
+  },
+  {
+    "courseId": "MGT109",
+    "courseName": "Human Resource Management",
+    "credits": 3,
+    "instructor": "Dr. Alka Bedi",
+    "semester": "Spring 2026",
+    "image": "/book-3.png",
+    "department": "Human Resources"
+  },
+  {
+    "courseId": "MGT110",
+    "courseName": "International Business",
+    "credits": 3,
+    "instructor": "Prof. Kunal Arora",
+    "semester": "Fall 2025",
+    "image": "/book-1.png",
+    "department": "International Business"
+  },
+  {
+    "courseId": "MGT111",
+    "courseName": "Entrepreneurship Development",
+    "credits": 2,
+    "instructor": "Dr. Nisha Sood",
+    "semester": "Spring 2026",
+    "image": "/book-2.png",
+    "department": "Entrepreneurship"
+  },
+  {
+    "courseId": "MGT112",
+    "courseName": "Business Analytics",
+    "credits": 3,
+    "instructor": "Prof. Isha Jain",
+    "semester": "Fall 2025",
+    "image": "/book-3.png",
+    "department": "Information Systems"
+  },
+  {
+    "courseId": "MGT113",
+    "courseName": "Leadership and Change Management",
+    "credits": 3,
+    "instructor": "Dr. Vikram Chauhan",
+    "semester": "Spring 2026",
+    "image": "/book-1.png",
+    "department": "Leadership"
+  },
+  {
+    "courseId": "MGT114",
+    "courseName": "Supply Chain Management",
+    "credits": 4,
+    "instructor": "Prof. Ramesh Patel",
+    "semester": "Fall 2025",
+    "image": "/book-2.png",
+    "department": "Operations"
+  }
+]
