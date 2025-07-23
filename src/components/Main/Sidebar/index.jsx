@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Logo } from "../../Common/Logo";
 import { sidebarLink } from "../../../RouteLinks";
 import {
