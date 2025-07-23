@@ -5,21 +5,97 @@ export const CalendarContainer = styled.div`
   width: 100%;
   flex-direction: column;
 
-  .calendar-controls {
-    display: flex;
-    align-items: center;
+  .calendarControls {
     gap: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
 
-    button {
-      padding: 6px 12px;
-      cursor: pointer;
-    }
-
-    .dropdowns {
-      margin-left: auto;
+    .calenderButtons {
       display: flex;
       gap: 8px;
+
+      button {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 6px;
+        background: #f6f8fa;
+        border: 1px solid #d0d7de;
+        box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+        &:hover {
+          background: #eef7fbff;
+        }
+
+        &:nth-child(2) {
+          display: flex;
+          width: auto;
+          font-size: 12px;
+          font-weight: 600;
+          align-items: center;
+          padding: 0px 11px 0px 3px;
+        }
+
+        & > span {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          & > svg {
+            width: 15px;
+            height: 15px;
+            margin-top: -1px;
+            margin-left: -1px;
+          }
+        }
+      }
+    }
+
+    .calenderDropdowns {
+      display: flex;
+      gap: 8px;
+
+      .calenderSelectBox {
+        position: relative;
+        display: flex;
+        border-radius: 6px;
+        background: #f6f8fa;
+        border: 1px solid #d0d7de;
+        box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+
+        & > select {
+          height: 30px;
+          font-size: 13px;
+          font-weight: 600;
+          width: auto;
+          padding: 0 30px 0 10px;
+          background: transparent;
+          border: 0px solid transparent;
+          appearance: none;
+          -webkit-appearance: none;
+        }
+
+        & > span {
+          top: 0;
+          right: 0;
+          width: 30px;
+          height: 30px;
+          display: flex;
+          position: absolute;
+          align-items: center;
+          justify-content: center;
+
+          & > svg {
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
 
       select {
         padding: 4px 8px;
@@ -29,40 +105,58 @@ export const CalendarContainer = styled.div`
 
   .calendar-grid {
     display: grid;
-    grid-template-columns: 60px repeat(7, 1fr);
-    border: 1px solid #ddd;
+    grid-template-columns: 80px repeat(7, 1fr);
     border-radius: 6px;
     overflow: hidden;
 
     .grid-row {
-      display: contents; // to allow row-wise grid inside columns
+      display: contents;
 
       &.header-row {
         > div {
           padding: 8px;
-          font-weight: bold;
-          border-bottom: 1px solid #ccc;
-          background-color: #f7f7f7;
-          text-align: center;
+          border-bottom: 1px solid #efefef;
+          border-right: 1px solid #eee;
+
+          .day-name {
+            color: #666666;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: normal;
+          }
+          .day-date {
+            line-height: 24px;
+            font-size: 23px;
+            font-weight: 600;
+          }
         }
       }
 
       .time-label {
-        padding: 6px 4px;
-        border-right: 1px solid #ccc;
+        padding: 6px 9px 6px 6px;
+        border-right: 1px solid #eee;
         border-bottom: 1px solid #eee;
-        font-size: 12px;
         text-align: right;
+        font-size: 12px;
+        font-weight: 600;
         color: #555;
+        display: flex;
         user-select: none;
+        align-items: flex-start;
+        justify-content: flex-end;
       }
 
       .day-cell {
         border-right: 1px solid #eee;
         border-bottom: 1px solid #eee;
         position: relative;
-        height: 50px; // height per hour row
-        overflow: visible; // allow tasks to overflow height for spanning
+        overflow: visible;
+        padding: 6px;
+
+        &:last-child {
+          border-right: 0px solid transparent;
+        }
 
         .task-group {
           position: absolute;
@@ -74,35 +168,54 @@ export const CalendarContainer = styled.div`
         }
 
         .task {
-          background-color: #eee;
+          padding: 4px 10px;
           color: #333;
-          border: 1px solid transparent;
+          font-size: 13px;
+          font-weight: 600;
+          border-radius: 5px;
           box-sizing: border-box;
+          margin-bottom: 4px;
+
+          &:last-child {
+            margin-bottom: 0px;
+          }
 
           &.meeting {
-            background-color: #4a90e2;
-            color: white;
+            border-left: 3px solid ${({ theme }) => theme.colors.info};
+            background-color: ${({ theme }) => theme.colors.infobg};
+            color: ${({ theme }) => theme.colors.info};
           }
 
           &.review {
-            background-color: #50e3c2;
-            color: white;
+            border-left: 3px solid ${({ theme }) => theme.colors.success};
+            background-color: ${({ theme }) => theme.colors.successbg};
+            color: ${({ theme }) => theme.colors.success};
           }
 
           &.personal {
-            background-color: #f5a623;
-            color: white;
+            border-left: 3px solid ${({ theme }) => theme.colors.warning};
+            background-color: ${({ theme }) => theme.colors.warningbg};
+            color: ${({ theme }) => theme.colors.warning};
           }
 
           &.appointment {
-            background-color: #d0021b;
-            color: white;
+            border-left: 3px solid ${({ theme }) => theme.colors.error};
+            background-color: ${({ theme }) => theme.colors.errorbg};
+            color: ${({ theme }) => theme.colors.error};
           }
 
           &.default {
-            background-color: #999;
-            color: white;
+            border-left: 3px solid ${({ theme }) => theme.colors.secured};
+            background-color: ${({ theme }) => theme.colors.securedbg};
+            color: ${({ theme }) => theme.colors.secured};
           }
+        }
+      }
+
+      &:last-child {
+        .time-label,
+        .day-cell {
+          border-bottom: 0px solid transparent;
         }
       }
     }
