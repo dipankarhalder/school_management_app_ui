@@ -3,6 +3,7 @@ import { locationInfo } from "../../../Constant";
 import { Calendar } from "../../../Shared/Calendar";
 import { Breadcrumb } from "../../../Shared/Breadcrumb";
 import { Rarrow } from "../../../Shared/Icons";
+import scheduleData from "../../../data/schedule.json";
 import {
   AppMainLayoutCover,
   AppTableDataInformation,
@@ -29,7 +30,7 @@ export const SchedulesPage = () => {
             <Breadcrumb items={pagePaths} separator={<Rarrow />} />
           </AppMainPageHeading>
           <AppContentDiv>
-            <Calendar />
+            <Calendar dataInfo={scheduleData} />
           </AppContentDiv>
         </ApplicationCoverContainer>
       </AppTableDataInformation>
