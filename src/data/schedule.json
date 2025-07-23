@@ -1,0 +1,68 @@
+{
+  "2025-07-23": [
+    { "label": "Client Presentation Preprations", "type": "personal", "start": "08:00", "end": "09:00" },
+    { "label": "Team Stand-up", "type": "meeting", "start": "10:00", "end": "10:30" },
+    { "label": "Server Maintenance", "type": "appointment", "start": "11:00", "end": "12:00" },
+    { "label": "Networking Strategy Review", "type": "review", "start": "13:00", "end": "14:00" },
+    { "label": "Hardware Audit", "type": "default", "start": "13:00", "end": "14:00" }
+  ],
+  "2025-07-24": [
+    { "label": "Security Check", "type": "appointment", "start": "08:30", "end": "09:30" },
+    { "label": "Vendor Meeting", "type": "meeting", "start": "10:00", "end": "11:00" },
+    { "label": "Tech Blog Writing", "type": "personal", "start": "11:30", "end": "13:00" },
+    { "label": "Sales Report Review", "type": "review", "start": "14:00", "end": "15:00" },
+    { "label": "Client Follow-up Calls", "type": "appointment", "start": "16:00", "end": "17:00" },
+    { "label": "Daily Wrap-up", "type": "planning", "start": "17:15", "end": "17:45" }
+  ],
+  "2025-07-25": [
+    { "label": "Network Performance Testing", "type": "personal", "start": "08:00", "end": "09:00" },
+    { "label": "Hardware Procurement", "type": "default", "start": "09:30", "end": "10:30" },
+    { "label": "Internal Workshop", "type": "meeting", "start": "11:00", "end": "12:00" },
+    { "label": "Client Support Session", "type": "review", "start": "13:30", "end": "14:30" },
+    { "label": "Documentation Update", "type": "default", "start": "15:00", "end": "16:00" }
+  ],
+  "2025-07-26": [
+    { "label": "IT Infrastructure Review", "type": "review", "start": "09:00", "end": "10:00" },
+    { "label": "Weekly Team Meeting", "type": "meeting", "start": "10:30", "end": "11:30" },
+    { "label": "New Hardware Setup", "type": "personal", "start": "12:00", "end": "13:00" },
+    { "label": "System Troubleshooting", "type": "meeting", "start": "14:00", "end": "15:00" },
+    { "label": "Schedule Planning", "type": "review", "start": "15:30", "end": "16:30" }
+  ],
+  "2025-07-27": [
+    { "label": "Client Training Session", "type": "review", "start": "08:30", "end": "10:00" },
+    { "label": "Server Load Test", "type": "personal", "start": "10:30", "end": "12:00" },
+    { "label": "Technical Documentation", "type": "default", "start": "13:00", "end": "14:00" },
+    { "label": "Support Ticket Review", "type": "meeting", "start": "14:30", "end": "15:30" },
+    { "label": "Team Feedback Review", "type": "review", "start": "16:00", "end": "17:00" },
+    { "label": "End-of-Day Wrap-up", "type": "appointment", "start": "17:15", "end": "17:45" }
+  ],
+  "2025-07-28": [
+    { "label": "Hardware Inspection", "type": "personal", "start": "09:00", "end": "10:00" },
+    { "label": "Networking Demo", "type": "meeting", "start": "10:30", "end": "11:30" },
+    { "label": "Security Patch Updates", "type": "review", "start": "12:00", "end": "13:00" },
+    { "label": "Prospect Client Call", "type": "personal", "start": "14:00", "end": "14:30" },
+    { "label": "Weekly Progress Review", "type": "review", "start": "15:00", "end": "16:00" }
+  ],
+  "2025-07-29": [
+    { "label": "System Reboot Test", "type": "appointment", "start": "08:30", "end": "09:30" },
+    { "label": "Business Plan Finalization", "type": "default", "start": "10:00", "end": "11:00" },
+    { "label": "Client Hardware Demo", "type": "meeting", "start": "12:00", "end": "13:00" },
+    { "label": "Network Traffic Analysis", "type": "review", "start": "14:00", "end": "15:00" },
+    { "label": "Technical Team Meeting", "type": "meeting", "start": "16:00", "end": "17:00" },
+    { "label": "Documentation Review", "type": "review", "start": "17:00", "end": "17:00" }
+  ],
+  "2025-07-30": [
+    { "label": "System Backup", "type": "default", "start": "08:00", "end": "09:00" },
+    { "label": "Performance Review", "type": "review", "start": "09:00", "end": "10:00" },
+    { "label": "Client Engagement Strategy", "type": "appointment", "start": "11:00", "end": "12:00" },
+    { "label": "IT Security Training", "type": "review", "start": "13:00", "end": "14:00" },
+    { "label": "End-of-Month Reporting", "type": "default", "start": "15:00", "end": "16:00" }
+  ],
+  "2025-07-31": [
+    { "label": "Monthly Review Meeting", "type": "meeting", "start": "09:00", "end": "10:00" },
+    { "label": "Hardware Upgrade Session", "type": "appointment", "start": "10:30", "end": "12:00" },
+    { "label": "Team Retrospective", "type": "review", "start": "13:00", "end": "14:00" },
+    { "label": "Client Check-in Calls", "type": "meeting", "start": "14:00", "end": "15:00" },
+    { "label": "Schedule for August", "type": "default", "start": "16:00", "end": "17:00" }
+  ]
+}
