@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TopBar } from "../../../components/Main/TopBar";
+import { TopBar } from "../../../Components/Main/TopBar";
 import { locationInfo } from "../../../Constant";
 import { TableInfo } from "../../../Shared/Table";
 import { AppMainLayoutCover, AppTableDataInformation } from "../style";
