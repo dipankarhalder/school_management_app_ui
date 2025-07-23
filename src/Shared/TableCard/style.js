@@ -37,9 +37,9 @@ export const TableSearch = styled.div`
     padding: 8px 14px;
     border-radius: 6px;
     align-items: center;
-    background: #f6f8fa;
-    border: 1px solid #d0d7de;
-    box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+    background: ${({ theme }) => theme.colors.sidebar};
+    border: 1px solid ${({ theme }) => theme.colors.exborder};
+    box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
     &.app_export {
       color: ${({ theme }) => theme.colors.black};
@@ -120,9 +120,9 @@ export const TableColumnEnableOption = styled.div`
     height: 34px;
     cursor: pointer;
     border-radius: 6px;
-    background: #f6f8fa;
-    border: 1px solid #d0d7de;
-    box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+    background: ${({ theme }) => theme.colors.sidebar};
+    border: 1px solid ${({ theme }) => theme.colors.exborder};
+    box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
     &:hover {
       background: #eef7fbff;
@@ -344,8 +344,8 @@ export const TableContainer = styled.div`
               border-radius: 50%;
               text-align: center;
               text-decoration: none;
-              border: 1px solid #d0d7de;
-              box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+              border: 1px solid ${({ theme }) => theme.colors.exborder};
+              box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
               & > img {
                 display: flex;
@@ -363,11 +363,11 @@ export const TableContainer = styled.div`
               font-weight: 700;
               text-align: center;
               line-height: 28px;
-              background: #f6f8fa;
               text-decoration: none;
-              border: 1px solid #d0d7de;
               color: ${({ theme }) => theme.colors.black};
-              box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+              background: ${({ theme }) => theme.colors.sidebar};
+              border: 1px solid ${({ theme }) => theme.colors.exborder};
+              box-shadow: ${({ theme }) => theme.colors.boxshadow};
             }
           }
         }
@@ -476,9 +476,9 @@ export const AppPaginationRightSide = styled.div`
       position: relative;
       display: flex;
       border-radius: 6px;
-      background: #f6f8fa;
-      border: 1px solid #d0d7de;
-      box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+      background: ${({ theme }) => theme.colors.sidebar};
+      border: 1px solid ${({ theme }) => theme.colors.exborder};
+      box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
       & > select {
         height: 30px;
@@ -552,9 +552,9 @@ export const AppPaginationRightSide = styled.div`
       width: 32px;
       border-radius: 6px;
       text-align: center;
-      background: #f6f8fa;
-      border: 1px solid #d0d7de;
-      box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+      background: ${({ theme }) => theme.colors.sidebar};
+      border: 1px solid ${({ theme }) => theme.colors.exborder};
+      box-shadow: ${({ theme }) => theme.colors.boxshadow};
     }
   }
 `;
@@ -572,8 +572,8 @@ export const PageButton = styled.button.withConfig({
   border-radius: 6px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
-  border: 1px solid #d0d7de;
-  box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+  border: 1px solid ${({ theme }) => theme.colors.exborder};
+  box-shadow: ${({ theme }) => theme.colors.boxshadow};
 `;
 
 export const AppFilterCoverSection = styled.div`
@@ -593,9 +593,9 @@ export const AppFilterLeft = styled.div`
 export const AppSearchInside = styled.div`
   width: auto;
   padding: 0px 14px;
-  background: #f6f8fa;
-  border: 1px solid #d0d7de;
-  box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+  background: ${({ theme }) => theme.colors.sidebar};
+  border: 1px solid ${({ theme }) => theme.colors.exborder};
+  box-shadow: ${({ theme }) => theme.colors.boxshadow};
   border-radius: 6px;
   position: relative;
 
@@ -649,9 +649,9 @@ export const AppFilterRight = styled.div`
       position: relative;
       display: flex;
       border-radius: 6px;
-      background: #f6f8fa;
-      border: 1px solid #d0d7de;
-      box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+      background: ${({ theme }) => theme.colors.sidebar};
+      border: 1px solid ${({ theme }) => theme.colors.exborder};
+      box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
       & > select {
         height: 26px;
@@ -695,9 +695,9 @@ export const AppFilterRight = styled.div`
     font-size: 12px;
     font-weight: 600;
     border-radius: 6px;
-    background: #f6f8fa;
-    border: 1px solid #d0d7de;
-    box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+    background: ${({ theme }) => theme.colors.sidebar};
+    border: 1px solid ${({ theme }) => theme.colors.exborder};
+    box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
     & > span {
       width: 26px;
@@ -750,8 +750,8 @@ export const TableViewCard = styled.div`
         position: relative;
         border-radius: 8px;
         background: #ffffff;
-        border: 1px solid #d0d7de;
-        box-shadow: 0px 2px 2px rgba(208, 215, 222, 0.2);
+        border: 1px solid ${({ theme }) => theme.colors.exborder};
+        box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
         & > .app_checkbox_card {
           position: absolute;

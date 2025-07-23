@@ -36,5 +36,5 @@ export const AppContentDiv = styled.div`
   width: 100%;
   margin-top: 14px;
   padding-top: 12px;
-  border-top: 1px solid #d2dbe5;
+  border-top: 1px solid ${({ theme }) => theme.colors.tableborder};
 `;

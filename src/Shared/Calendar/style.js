@@ -22,9 +22,9 @@ export const CalendarContainer = styled.div`
         height: 30px;
         cursor: pointer;
         border-radius: 6px;
-        background: #f6f8fa;
-        border: 1px solid #d0d7de;
-        box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+        background: ${({ theme }) => theme.colors.sidebar};
+        border: 1px solid ${({ theme }) => theme.colors.exborder};
+        box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
         &:hover {
           background: #eef7fbff;
@@ -64,9 +64,9 @@ export const CalendarContainer = styled.div`
         position: relative;
         display: flex;
         border-radius: 6px;
-        background: #f6f8fa;
-        border: 1px solid #d0d7de;
-        box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+        background: ${({ theme }) => theme.colors.sidebar};
+        border: 1px solid ${({ theme }) => theme.colors.exborder};
+        box-shadow: ${({ theme }) => theme.colors.boxshadow};
 
         & > select {
           height: 30px;

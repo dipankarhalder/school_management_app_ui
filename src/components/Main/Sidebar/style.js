@@ -17,7 +17,7 @@ export const AppSideBar = styled.div`
   position: fixed;
   top: 0px;
   ${backgroundColor("sidebar")};
-  border-right: 1px solid #d2dbe5;
+  border-right: 1px solid ${({ theme }) => theme.colors.tableborder};
 `;
 
 export const AppSidebarInside = styled.div`
