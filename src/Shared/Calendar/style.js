@@ -1,66 +1,110 @@
 import styled from "styled-components";
 
 export const CalendarContainer = styled.div`
-  width: 90%;
-  max-width: 900px;
-  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 
-  .calendar-header {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  .calendar-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+
+    button {
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    .dropdowns {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+
+      select {
+        padding: 4px 8px;
+      }
+    }
   }
 
   .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-  }
+    grid-template-columns: 60px repeat(7, 1fr);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
 
-  .calendar-day-header {
-    font-weight: bold;
-    text-align: center;
-    padding: 10px 0;
-    background-color: #eee;
-  }
+    .grid-row {
+      display: contents; // to allow row-wise grid inside columns
 
-  .calendar-day {
-    height: 100px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    position: relative;
-    cursor: pointer;
-    background-color: #fefefe;
+      &.header-row {
+        > div {
+          padding: 8px;
+          font-weight: bold;
+          border-bottom: 1px solid #ccc;
+          background-color: #f7f7f7;
+          text-align: center;
+        }
+      }
 
-    .date {
-      font-size: 14px;
-      font-weight: bold;
+      .time-label {
+        padding: 6px 4px;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #eee;
+        font-size: 12px;
+        text-align: right;
+        color: #555;
+        user-select: none;
+      }
+
+      .day-cell {
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        height: 50px; // height per hour row
+        overflow: visible; // allow tasks to overflow height for spanning
+
+        .task-group {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          right: 2px;
+          bottom: 2px;
+          display: flex;
+        }
+
+        .task {
+          background-color: #eee;
+          color: #333;
+          border: 1px solid transparent;
+          box-sizing: border-box;
+
+          &.meeting {
+            background-color: #4a90e2;
+            color: white;
+          }
+
+          &.review {
+            background-color: #50e3c2;
+            color: white;
+          }
+
+          &.personal {
+            background-color: #f5a623;
+            color: white;
+          }
+
+          &.appointment {
+            background-color: #d0021b;
+            color: white;
+          }
+
+          &.default {
+            background-color: #999;
+            color: white;
+          }
+        }
+      }
     }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      background-color: red;
-      border-radius: 50%;
-      position: absolute;
-      bottom: 5px;
-      left: 5px;
-    }
-
-    .event-popup {
-      position: absolute;
-      top: 20px;
-      left: 5px;
-      background: #fff;
-      border: 1px solid #999;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      padding: 10px;
-      z-index: 10;
-      font-size: 12px;
-    }
-  }
-
-  .calendar-day.empty {
-    background-color: transparent;
-    border: none;
   }
 `;

@@ -1,14 +1,37 @@
 import { TopBar } from "../../../components/Main/TopBar";
 import { locationInfo } from "../../../Constant";
 import { Calendar } from "../../../Shared/Calendar";
-import { AppMainLayoutCover, AppTableDataInformation } from "../style";
+import { Breadcrumb } from "../../../Shared/Breadcrumb";
+import { Rarrow } from "../../../Shared/Icons";
+import {
+  AppMainLayoutCover,
+  AppTableDataInformation,
+  ApplicationCoverContainer,
+  AppMainPageHeading,
+  AppContentDiv,
+} from "../style";
+
+const pagePaths = [
+  { label: "Apps", path: "/" },
+  { label: "All Schedules", path: "/" },
+];
 
 export const SchedulesPage = () => {
+  const pageTitle = "Manage Schedules";
+
   return (
     <AppMainLayoutCover>
       <TopBar location={locationInfo} />
       <AppTableDataInformation>
-        <Calendar />
+        <ApplicationCoverContainer>
+          <AppMainPageHeading>
+            <h1>{pageTitle}</h1>
+            <Breadcrumb items={pagePaths} separator={<Rarrow />} />
+          </AppMainPageHeading>
+          <AppContentDiv>
+            <Calendar />
+          </AppContentDiv>
+        </ApplicationCoverContainer>
       </AppTableDataInformation>
     </AppMainLayoutCover>
   );
