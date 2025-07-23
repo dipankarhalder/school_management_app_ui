@@ -7,7 +7,7 @@ export const AppMainTopCover = styled.div`
   position: fixed;
   top: 0px;
   padding: 10px 24px;
-  border-bottom: 1px solid #d2dbe5;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.tableborder};
   align-items: center;
   justify-content: space-between;
   z-index: 2;
@@ -27,9 +27,9 @@ export const AppMainItemSection = styled.div`
 
 export const AppLocationDropDown = styled.div`
   display: flex;
-  background: #f6f8fa;
-  border: 1px solid #d0d7de;
-  box-shadow: inset 0px 1px 0px rgba(208, 215, 222, 0.2);
+  background: ${({ theme }) => theme.colors.sidebar};
+  border: 1px solid ${({ theme }) => theme.colors.exborder};
+  box-shadow: ${({ theme }) => theme.colors.boxshadow};
   border-radius: 6px;
   padding-left: 4px;
 
