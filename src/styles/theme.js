@@ -6,7 +6,6 @@ export const theme = {
     transparent: "transparent",
     white: "#ffffff",
     black: "#000000",
-
     warning: "#be6e05ff",
     warningbg: "#fef3dd",
     success: "#037722",
@@ -17,7 +16,6 @@ export const theme = {
     errorbg: "#ffe4e5",
     secured: "#351e9a",
     securedbg: "#f0e6ff",
-
     bg: "#ececee",
     green: "#146c2e",
     blue: "#0b57d0",
@@ -35,5 +33,7 @@ export const theme = {
     sidebar: "#f6f8fa",
     navbg: "#dfe0e1",
     navText: "#1f2328",
+    exborder: "#d0d7de",
+    boxshadow: "inset 0px 1px 0px rgba(208, 215, 222, 0.2)",
   },
 };
